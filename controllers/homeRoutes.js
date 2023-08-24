@@ -1,20 +1,31 @@
-const router = require('express').Router();
-const { User } = require('../models');
-const withAuth = require('../utils/auth');
 
-// Prevent non logged in users from viewing the homepage
-router.get('/', withAuth, async (req, res) => {
+const router = require("express").Router();
+const { Doctor, Patient, MedicalCertificate } = require("../models");
+
+const withAuth = require("../utils/auth");
+
+router.get("/", withAuth, async (req, res) => {});
+
+// Get doctors profile with Auth
+router.get("/doctor_profile", withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
+    //Find doctor by session ID
+    // includes any patient that has requested a specific doctor to apporve the request
+    // Need to add - Include patients where doctor preference is not set
+    const doctorData = await Doctor.findByPK(req.session.user_id, {
+      include: [
+        {
+          model: Patient,
+          attributes: ["name"],
+        },
+      ],
     });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const doctor = doctorData.get({ plain: true });
 
-    res.render('homepage', {
-      users,
-      // Pass the logged in flag to the template
+    req.render("doctor", {
+      ...doctor,
+
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -22,14 +33,26 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
+
+router.get("/patient_profile", withAuth, async (req, res) => {
+  try {
+    const patientData = await Patient.findByPK(req.session.user_id, {
+      include: [
+        {
+          model: MedicalCertificate,
+        },
+      ],
+    });
+    const patient = patientData.get({ plain: true });
+
+    req.render("patient", {
+      ...patient,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 
-  res.render('login');
 });
 
 module.exports = router;
