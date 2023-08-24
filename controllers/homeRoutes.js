@@ -1,3 +1,4 @@
+
 const router = require("express").Router();
 const { Doctor, Patient, MedicalCertificate } = require("../models");
 
@@ -24,12 +25,14 @@ router.get("/doctor_profile", withAuth, async (req, res) => {
 
     req.render("doctor", {
       ...doctor,
+
       logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 router.get("/patient_profile", withAuth, async (req, res) => {
   try {
@@ -49,6 +52,7 @@ router.get("/patient_profile", withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+
 });
 
 module.exports = router;
