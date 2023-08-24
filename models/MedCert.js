@@ -20,6 +20,14 @@ MedicalCertificate.init(
         key: 'patient_id',
       },
     },
+    doctor_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Doctor,
+        key: 'doctor_id',
+      },
+    },
     patient_name: {
       type: DataTypes.STRING,
     },
@@ -42,8 +50,5 @@ MedicalCertificate.init(
     modelName: 'medical_certificate',
   }
 );
-
-// Define the association between MedicalCertificate and Patient
-MedicalCertificate.belongsTo(Patient, { foreignKey: 'patient_id' });
 
 module.exports = MedicalCertificate;
