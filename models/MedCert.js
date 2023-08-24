@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
-const Patient = require('./Patient');
+// const Patient = require("./Patient");
 
 class MedicalCertificate extends Model {}
 
@@ -15,8 +15,9 @@ MedicalCertificate.init(
     patient_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { //this is the foreign key for patients\\
-        model: Patient,
+      references: {
+        //this is the foreign key for patients\\
+        model: 'patient',
         key: 'patient_id',
       },
     },
@@ -24,7 +25,7 @@ MedicalCertificate.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: Doctor,
+        model: 'doctor',
         key: 'doctor_id',
       },
     },

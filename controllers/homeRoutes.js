@@ -1,12 +1,12 @@
-const router = require("express").Router();
-const { Doctor, Patient, MedicalCertificate } = require("../models");
+const router = require('express').Router();
+const { Doctor, Patient, MedicalCertificate } = require('../models');
 
-const withAuth = require("../utils/auth");
+const withAuth = require('../utils/auth');
 
-router.get("/", withAuth, async (req, res) => {});
+router.get('/', withAuth, async (req, res) => {});
 
 // Get doctors profile with Auth
-router.get("/doctor_profile", withAuth, async (req, res) => {
+router.get('/doctor_profile', withAuth, async (req, res) => {
   try {
     //Find doctor by session ID
     // includes any patient that has requested a specific doctor to apporve the request
@@ -15,14 +15,14 @@ router.get("/doctor_profile", withAuth, async (req, res) => {
       include: [
         {
           model: Patient,
-          attributes: ["name"],
+          attributes: ['name'],
         },
       ],
     });
 
     const doctor = doctorData.get({ plain: true });
 
-    req.render("doctor", {
+    req.render('doctor', {
       ...doctor,
 
       logged_in: req.session.logged_in,
@@ -32,7 +32,7 @@ router.get("/doctor_profile", withAuth, async (req, res) => {
   }
 });
 
-router.get("/patients", withAuth, async (req, res) => {
+router.get('/patients', withAuth, async (req, res) => {
   try {
     patientData = await Patient.findAll({
       where: { requires_certificate: true },
@@ -40,13 +40,13 @@ router.get("/patients", withAuth, async (req, res) => {
 
     const patients = patientData.map((patient) => patient.get({ plain: true }));
 
-    res.render("doctor", { patients });
+    res.render('doctor', { patients });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get("/patient_profile", withAuth, async (req, res) => {
+router.get('/patient_profile', withAuth, async (req, res) => {
   try {
     const patientData = await Patient.findByPK(req.session.user_id, {
       include: [
@@ -57,7 +57,7 @@ router.get("/patient_profile", withAuth, async (req, res) => {
     });
     const patient = patientData.get({ plain: true });
 
-    req.render("patient", {
+    req.render('patient', {
       ...patient,
       logged_in: req.session.logged_in,
     });

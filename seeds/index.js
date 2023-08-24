@@ -1,6 +1,6 @@
 const sequelize = require('../config/connection');
-const seedDoctors = require('./galleryData');
-const seedPatients = require('./paintingData');
+const seedDoctors = require('./doctorData');
+const seedPatients = require('./patientData');
 // const seedCertificate = require('./patientData'); Still need to work on this
 
 const seedAll = async () => {

@@ -1,9 +1,9 @@
-const router = require("express").Router();
-const { Doctor, Patient, MedicalCertificate } = require("../models");
+const router = require('express').Router();
+const { Patient } = require('../../models');
 
-const withAuth = require("../../utils/auth");
+const withAuth = require('../../utils/auth');
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const patientData = await Patient.create(req.body);
 
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const patientData = await Patient.findOne({
       where: { email: req.body.email },
@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
     if (!patientData) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
       req.session.user_id = patientData.id;
       req.session.logged_in = true;
 
-      res.json({ user: patientData, message: "You are now logged in!" });
+      res.json({ user: patientData, message: 'You are now logged in!' });
     });
   } catch (err) {
     res.status(400).json(err);
@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
 });
 
 //update profile
-router.put("/:id", withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const updateStatus = await Patient.update(
       {
@@ -73,18 +73,18 @@ router.put("/:id", withAuth, async (req, res) => {
       }
     );
     if (!updateStatus[0]) {
-      res.status(404).json({ message: "No category with this id" });
+      res.status(404).json({ message: 'No category with this id' });
     }
 
     req.session.save(() => {
       req.session.user_id = patientData.id;
       req.session.logged_in = true;
 
-      res.json({ message: "updated!" });
+      res.json({ message: 'updated!' });
     });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-module.exports = router
+module.exports = router;
