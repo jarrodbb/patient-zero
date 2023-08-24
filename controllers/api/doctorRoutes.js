@@ -1,10 +1,10 @@
-const router = require("express").Router();
-const { Doctor, Patient } = require("../models");
+const router = require('express').Router();
+const { Doctor } = require('../../models');
 
-const withAuth = require("../../utils/auth");
+// const withAuth = require('../../utils/auth');
 
 // Create user - Not sure we are going to bother with this
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const doctorData = await Doctor.create(req.body);
 
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 });
 
 // Doctor login - checks password
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const doctorData = await Doctor.findOne({
       where: { email: req.body.email },
@@ -29,7 +29,7 @@ router.post("/login", async (req, res) => {
     if (!doctorData) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({ user: doctorData, message: "You are now logged in!" });
+      res.json({ user: doctorData, message: 'You are now logged in!' });
     });
   } catch (err) {
     res.status(400).json(err);

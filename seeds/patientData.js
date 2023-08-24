@@ -1,4 +1,4 @@
-const {Patient} = require('../models/Patient');
+const { Patient } = require('../models');
 
 const patientData = [
   {
@@ -45,4 +45,3 @@ const patientData = [
 const seedPatients = () => Patient.bulkCreate(patientData);
 
 module.exports = seedPatients;
-

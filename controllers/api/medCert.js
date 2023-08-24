@@ -1,10 +1,10 @@
-const router = require("express").Router();
-const { Doctor, Patient, MedicalCertificate } = require("../models");
+const router = require('express').Router();
+// const { Doctor, Patient, MedicalCertificate } = require('../../models');
 
-const withAuth = require("../../utils/auth");
+const withAuth = require('../../utils/auth');
 
 // Create medical certificate
-router.post("/", withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const certificateData = await MedCert.create(red.body);
 
