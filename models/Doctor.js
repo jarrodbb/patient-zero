@@ -10,6 +10,10 @@ Doctor.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      references: {
+        model: 'patient',
+        key: 'doctor_id',
+      },
     },
     name: {
       type: DataTypes.STRING,
@@ -27,7 +31,7 @@ Doctor.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [6], //minimum length for a str atribute //
+        len: [6], //minimum length for a str atribute so the password thingie //
       },
     },
   },

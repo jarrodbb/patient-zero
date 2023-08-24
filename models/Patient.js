@@ -64,6 +64,14 @@ Patient.init(
     medication_list: {
       type: DataTypes.STRING,
     },
+    doctor_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: Doctor,
+        key: 'doctor_id',
+      },
+    },
   },
   {
     sequelize,

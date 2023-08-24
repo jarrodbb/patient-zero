@@ -1,4 +1,3 @@
-
 const router = require("express").Router();
 const { Doctor, Patient, MedicalCertificate } = require("../models");
 
@@ -33,6 +32,19 @@ router.get("/doctor_profile", withAuth, async (req, res) => {
   }
 });
 
+router.get("/patients", withAuth, async (req, res) => {
+  try {
+    patientData = await Patient.findAll({
+      where: { requires_certificate: true },
+    });
+
+    const patients = patientData.map((patient) => patient.get({ plain: true }));
+
+    res.render("doctor", { patients });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get("/patient_profile", withAuth, async (req, res) => {
   try {
@@ -52,7 +64,6 @@ router.get("/patient_profile", withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-
 });
 
 module.exports = router;
