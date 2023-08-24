@@ -55,3 +55,5 @@ router.post("/login", async (req, res) => {
 
 // Post request - approve doctors note
 //
+
+module.exports = router;
