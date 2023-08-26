@@ -68,7 +68,6 @@ router.post('/login', async (req, res) => {
 });
 
 // Post request - approve doctors note
-// Doctor routes
 
 // Get all doctors with their associated patients
 router.get('/', (req, res) => {
