@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient } = require('../../models');
+const { Patient, Doctor } = require('../../models');
 
 const withAuth = require('../../utils/auth');
 
@@ -21,6 +21,22 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const patientData = await Patient.findAll();
+
+    res.status(200).json(patientData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    const patientData = await Patient.findByPk(req.params.id, {
+      include: [{ model: Doctor, attributes: ['name'] }],
+    });
+    if (!patientData) {
+      res.status(404).json({ message: 'No patient found with this id!' });
+      return;
+    }
 
     res.status(200).json(patientData);
   } catch (err) {
@@ -52,6 +68,8 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = patientData.id;
+      // getting undefined for req.session.user_id
+      console.log(req.session.user_id);
       req.session.logged_in = true;
 
       res.json({ user: patientData, message: 'You are now logged in!' });
@@ -61,10 +79,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
-//update profile
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const patientData = await Patient.update(
+    // const patientData = await Patient.findByPk(req.session.user_id);
+    const updateStatus = await Patient.update(
       {
         date_of_birth: req.body.date_of_birth,
         requires_certificate: req.body.requires_certificate,
@@ -81,14 +99,15 @@ router.put('/:id', withAuth, async (req, res) => {
         },
       }
     );
+    
     if (!updateStatus[0]) {
       res.status(404).json({ message: 'No Patient with this id' });
     }
 
     req.session.save(() => {
-      req.session.user_id = patientData.id;
+      req.session.user_id = updateStatus.id;
       req.session.logged_in = true;
-
+      // console.log(req.session.user_id);
       res.json({ message: 'updated!' });
     });
   } catch (err) {
@@ -105,5 +124,43 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+//update profile - this was the other way where i tried to use the req.session.user_id
+// router.put('/', withAuth, async (req, res) => {
+//   try {
+//     // const patientData = await Patient.findByPk(req.session.user_id);
+
+//     const updateStatus = await Patient.update(
+//       {
+//         date_of_birth: req.body.date_of_birth,
+//         requires_certificate: req.body.requires_certificate,
+//         allergies: req.body.allergies,
+//         diabetes: req.body.diabetes,
+//         heart_disease: req.body.heart_disease,
+//         high_blood_pressure: req.body.high_blood_pressure,
+//         kidney_or_liver_disease: req.body.kidney_or_liver_disease,
+//         medication_list: req.body.medication_list,
+//         doctor_id: req.body.doctor_id,
+//       },
+//       {
+//         where: {
+//           id: req.session.user_id,
+//         },
+//       }
+//     );
+//     if (!updateStatus[0]) {
+//       res.status(404).json({ message: 'No Patient with this id' });
+//     }
+
+//     req.session.save(() => {
+//       req.session.user_id = patientData.id;
+//       req.session.logged_in = true;
+
+//       res.json({ message: 'updated!' });
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 module.exports = router;
