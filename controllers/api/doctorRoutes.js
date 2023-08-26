@@ -68,9 +68,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Post request - approve doctors note
-// Doctor routes 
-
-
+// Doctor routes
 
 // Get all doctors with their associated patients
 router.get('/', (req, res) => {
@@ -80,9 +78,16 @@ router.get('/', (req, res) => {
       {
         model: Patient,
         attributes: [
-          'patient_id', 'name', 'email', 'requires_certificate',
-          'allergies', 'diabetes', 'heart_disease', 'high_blood_pressure',
-          'kidney_or_liver_disease', 'medication_list'
+          'patient_id',
+          'name',
+          'email',
+          'requires_certificate',
+          'allergies',
+          'diabetes',
+          'heart_disease',
+          'high_blood_pressure',
+          'kidney_or_liver_disease',
+          'medication_list',
         ],
       },
     ],
@@ -101,9 +106,16 @@ router.get('/:id', (req, res) => {
       {
         model: Patient,
         attributes: [
-          'patient_id', 'name', 'email', 'requires_certificate',
-          'allergies', 'diabetes', 'heart_disease', 'high_blood_pressure',
-          'kidney_or_liver_disease', 'medication_list'
+          'patient_id',
+          'name',
+          'email',
+          'requires_certificate',
+          'allergies',
+          'diabetes',
+          'heart_disease',
+          'high_blood_pressure',
+          'kidney_or_liver_disease',
+          'medication_list',
         ],
       },
     ],
