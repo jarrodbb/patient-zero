@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Doctor } = require('../../models');
+const { Doctor, Patient } = require('../../models');
 
 // const withAuth = require('../../utils/auth');
 
@@ -54,6 +54,57 @@ router.post('/login', async (req, res) => {
 });
 
 // Post request - approve doctors note
-//
+// Doctor routes 
+
+
+
+// Get all doctors with their associated patients
+router.get('/', (req, res) => {
+  Doctor.findAll({
+    attributes: ['doctor_id', 'name', 'email'],
+    include: [
+      {
+        model: Patient,
+        attributes: [
+          'patient_id', 'name', 'email', 'requires_certificate',
+          'allergies', 'diabetes', 'heart_disease', 'high_blood_pressure',
+          'kidney_or_liver_disease', 'medication_list'
+        ],
+      },
+    ],
+  })
+    .then((doctorData) => res.json(doctorData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/:id', (req, res) => {
+  Doctor.findByPk(req.params.id, {
+    attributes: ['doctor_id', 'name', 'email'],
+    include: [
+      {
+        model: Patient,
+        attributes: [
+          'patient_id', 'name', 'email', 'requires_certificate',
+          'allergies', 'diabetes', 'heart_disease', 'high_blood_pressure',
+          'kidney_or_liver_disease', 'medication_list'
+        ],
+      },
+    ],
+  })
+    .then((doctorData) => {
+      if (!doctorData) {
+        res.status(404).json({ message: 'Doctor not found' });
+        return;
+      }
+      res.json(doctorData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
