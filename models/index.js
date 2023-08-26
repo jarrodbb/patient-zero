@@ -19,4 +19,12 @@ Doctor.hasMany(MedicalCertificate, {
   foreignKey: 'doctor_id',
 });
 
+MedicalCertificate.belongsTo(Patient, {
+  foreignKey: 'patient_id',
+});
+
+MedicalCertificate.belongsTo(Doctor, {
+  foreignKey: 'doctor_id',
+});
+
 module.exports = { Doctor, Patient, MedicalCertificate };

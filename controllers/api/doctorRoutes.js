@@ -1,7 +1,21 @@
 const router = require('express').Router();
-const { Doctor } = require('../../models');
+const { Doctor, Patient } = require('../../models');
 
 // const withAuth = require('../../utils/auth');
+
+// Get all doctors and patients
+router.get('/', async (req, res) => {
+  try {
+    const doctorData = await Doctor.findAll({
+      attributes: { exclude: ['password'] },
+      include: [{ model: Patient }],
+    });
+
+    res.status(200).json(doctorData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 // Create user - Not sure we are going to bother with this
 router.post('/', async (req, res) => {

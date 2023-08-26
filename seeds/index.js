@@ -1,6 +1,7 @@
 const sequelize = require('../config/connection');
 const seedDoctors = require('./doctorData');
 const seedPatients = require('./patientData');
+const seedMedCert = require('./medCertData');
 // const seedCertificate = require('./patientData'); Still need to work on this
 
 const seedAll = async () => {
@@ -9,6 +10,8 @@ const seedAll = async () => {
   await seedDoctors();
 
   await seedPatients();
+
+  await seedMedCert();
 
   process.exit(0);
 };
