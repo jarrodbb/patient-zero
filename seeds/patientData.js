@@ -4,7 +4,7 @@ const patientData = [
   {
     name: 'Joe Sickie',
     date_of_birth: '1995-05-15',
-    email: 'Sickie@gmail.com',
+    email: 'sickie@gmail.com',
     password: 'securepass123',
     requires_certificate: true,
     allergies: 'Pollen',
@@ -18,7 +18,7 @@ const patientData = [
   {
     name: 'John Sleep',
     date_of_birth: '1988-09-20',
-    email: 'Sleep@hotmail.com',
+    email: 'sleep@hotmail.com',
     password: 'strongpass456',
     requires_certificate: false,
     allergies: 'Nuts',
@@ -32,7 +32,7 @@ const patientData = [
   {
     name: 'Amanda Away',
     date_of_birth: '2000-03-10',
-    email: 'Away@example.com',
+    email: 'away@example.com',
     password: 'secretword789',
     requires_certificate: true,
     allergies: 'None',
@@ -45,6 +45,10 @@ const patientData = [
   },
 ];
 
-const seedPatients = () => Patient.bulkCreate(patientData);
+const seedPatients = () =>
+  Patient.bulkCreate(patientData, {
+    individualHooks: true,
+    returning: true,
+  });
 
 module.exports = seedPatients;

@@ -3,19 +3,19 @@ const { Doctor, Patient } = require('../../models');
 
 // const withAuth = require('../../utils/auth');
 
-// Get all doctors and patients
-router.get('/', async (req, res) => {
-  try {
-    const doctorData = await Doctor.findAll({
-      attributes: { exclude: ['password'] },
-      include: [{ model: Patient }],
-    });
+// // Get all doctors and patients
+// router.get('/', async (req, res) => {
+//   try {
+//     const doctorData = await Doctor.findAll({
+//       attributes: { exclude: ['password'] },
+//       include: [{ model: Patient }],
+//     });
 
-    res.status(200).json(doctorData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+//     res.status(200).json(doctorData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 // Create user - Not sure we are going to bother with this
 router.post('/', async (req, res) => {
@@ -68,7 +68,6 @@ router.post('/login', async (req, res) => {
 });
 
 // Post request - approve doctors note
-// Doctor routes
 
 // Get all doctors with their associated patients
 router.get('/', (req, res) => {
@@ -134,3 +133,4 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
+

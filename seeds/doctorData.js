@@ -18,6 +18,10 @@ const doctorData = [
   },
 ];
 
-const seedDoctors = () => Doctor.bulkCreate(doctorData);
+const seedDoctors = () =>
+  Doctor.bulkCreate(doctorData, {
+    individualHooks: true,
+    returning: true,
+  });
 
 module.exports = seedDoctors;
