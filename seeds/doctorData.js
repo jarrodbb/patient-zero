@@ -3,12 +3,12 @@ const { Doctor } = require('../models');
 const doctorData = [
   {
     name: 'Dr. Dan Javascript',
-    email: 'Javascript@example.com',
+    email: 'javascript@example.com',
     password: 'password123',
   },
   {
     name: 'Dr. Error Prone',
-    email: 'Error@example.com',
+    email: 'error@example.com',
     password: 'securepassword456',
   },
   {
