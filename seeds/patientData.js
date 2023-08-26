@@ -13,6 +13,7 @@ const patientData = [
     high_blood_pressure: true,
     kidney_or_liver_disease: false,
     medication_list: 'Antihistamine',
+    doctor_id: 2,
   },
   {
     name: 'John Sleep',
@@ -26,6 +27,7 @@ const patientData = [
     high_blood_pressure: false,
     kidney_or_liver_disease: true,
     medication_list: 'Insulin',
+    doctor_id: 1,
   },
   {
     name: 'Amanda Away',
@@ -39,6 +41,7 @@ const patientData = [
     high_blood_pressure: true,
     kidney_or_liver_disease: true,
     medication_list: 'Beta-blockers',
+    doctor_id: 1,
   },
 ];
 
