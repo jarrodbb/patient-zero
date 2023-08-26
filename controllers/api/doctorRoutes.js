@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = doctorData.id;
       req.session.logged_in = true;
 
       res.json({ user: doctorData, message: 'You are now logged in!' });
@@ -133,4 +133,3 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
-
