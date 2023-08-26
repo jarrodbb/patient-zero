@@ -3,7 +3,73 @@ const { Doctor, Patient, MedicalCertificate } = require('../models');
 
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {});
+router.get('/', (req, res) => {
+  res.render('homepage', {
+    logged_in: req.session.logged_in,
+  });
+});
+
+router.get('/doctor_login', async (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('doctorLogin');
+});
+
+router.get('/patient_login', async (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('patientLogin');
+});
+
+router.get('/profile', withAuth, async (req, res) => {
+  if (Doctor) {
+    try {
+      const doctorData = await Doctor.findByPK(req.session.user_id, {
+        include: [
+          {
+            model: Patient,
+            attributes: ['name'],
+          },
+        ],
+      });
+
+      const doctor = doctorData.get({ plain: true });
+
+      req.render('doctor', {
+        ...doctor,
+
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  if (Patient)
+    try {
+      const patientData = await Patient.findByPK(req.session.user_id, {
+        include: [
+          {
+            model: MedicalCertificate,
+          },
+        ],
+      });
+      const patient = patientData.get({ plain: true });
+
+      req.render('patient', {
+        ...patient,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
 
 // Get doctors profile with Auth
 router.get('/doctor_profile', withAuth, async (req, res) => {

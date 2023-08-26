@@ -18,6 +18,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const patientData = await Patient.findAll();
+
+    res.status(200).json(patientData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     const patientData = await Patient.findOne({
@@ -54,10 +64,9 @@ router.post('/login', async (req, res) => {
 //update profile
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const updateStatus = await Patient.update(
+    const patientData = await Patient.update(
       {
         date_of_birth: req.body.date_of_birth,
-        age: req.body.age,
         requires_certificate: req.body.requires_certificate,
         allergies: req.body.allergies,
         diabetes: req.body.diabetes,
@@ -68,12 +77,12 @@ router.put('/:id', withAuth, async (req, res) => {
       },
       {
         where: {
-          id: req.params.id,
+          patient_id: req.params.id,
         },
       }
     );
     if (!updateStatus[0]) {
-      res.status(404).json({ message: 'No category with this id' });
+      res.status(404).json({ message: 'No Patient with this id' });
     }
 
     req.session.save(() => {
