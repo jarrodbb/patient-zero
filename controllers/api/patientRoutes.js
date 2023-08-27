@@ -75,7 +75,8 @@ router.post('/login', async (req, res) => {
       res.json({ user: patientData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -99,7 +100,7 @@ router.put('/:id', withAuth, async (req, res) => {
         },
       }
     );
-    
+
     if (!updateStatus[0]) {
       res.status(404).json({ message: 'No Patient with this id' });
     }
@@ -111,7 +112,8 @@ router.put('/:id', withAuth, async (req, res) => {
       res.json({ message: 'updated!' });
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -126,41 +128,43 @@ router.post('/logout', (req, res) => {
 });
 
 //update profile - this was the other way where i tried to use the req.session.user_id
-// router.put('/', withAuth, async (req, res) => {
-//   try {
-//     // const patientData = await Patient.findByPk(req.session.user_id);
+router.put('/', withAuth, async (req, res) => {
+  console.log(req.session.user_id);
+  try {
+    // const patientData = await Patient.findByPk(req.session.user_id);
 
-//     const updateStatus = await Patient.update(
-//       {
-//         date_of_birth: req.body.date_of_birth,
-//         requires_certificate: req.body.requires_certificate,
-//         allergies: req.body.allergies,
-//         diabetes: req.body.diabetes,
-//         heart_disease: req.body.heart_disease,
-//         high_blood_pressure: req.body.high_blood_pressure,
-//         kidney_or_liver_disease: req.body.kidney_or_liver_disease,
-//         medication_list: req.body.medication_list,
-//         doctor_id: req.body.doctor_id,
-//       },
-//       {
-//         where: {
-//           id: req.session.user_id,
-//         },
-//       }
-//     );
-//     if (!updateStatus[0]) {
-//       res.status(404).json({ message: 'No Patient with this id' });
-//     }
+    const updateStatus = await Patient.update(
+      {
+        date_of_birth: req.body.date_of_birth,
+        requires_certificate: req.body.requires_certificate,
+        allergies: req.body.allergies,
+        diabetes: req.body.diabetes,
+        heart_disease: req.body.heart_disease,
+        high_blood_pressure: req.body.high_blood_pressure,
+        kidney_or_liver_disease: req.body.kidney_or_liver_disease,
+        medication_list: req.body.medication_list,
+        doctor_id: req.body.doctor_id,
+      },
+      {
+        where: {
+          id: req.session.user_id,
+        },
+      }
+    );
+    if (!updateStatus[0]) {
+      res.status(404).json({ message: 'No Patient with this id' });
+    }
 
-//     req.session.save(() => {
-//       req.session.user_id = patientData.id;
-//       req.session.logged_in = true;
+    req.session.save(() => {
+      req.session.user_id = patientData.id;
+      req.session.logged_in = true;
 
-//       res.json({ message: 'updated!' });
-//     });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
+      res.json({ message: 'updated!' });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
