@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Certificates!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Generate New Certificate:</h3>
+
+    <form class="form new-certificate-form">
+      <div class="form-group">
+        <label for="certificate-name">certificate name:</label>
+        <input class="form-input" type="text" id="certificate-name" name="certificate-name" />
+      </div>
+      <div class="form-group">
+        <label for="certificate-doctor">certificate doctor:</label>
+        <input class="form-input" type="text" id="certificate-doctor" name="certificate-doctor" />
+      </div>
+      <div class="form-group">
+        <label for="certificate-desc">description:</label>
+        <textarea class="form-input" id="certificate-desc" name="certificate-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="certificate-date">certificate date:</label>
+        <input class="form-input" type="text" id="certificate-date" name="certificate-date" />
+      </div>
+      <div class="form-group">
+        <label for="certificate-funding">price ($):</label>
+        <input class="form-input" type="number" id="certificate-pricing" name="certificate-pricing" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if certificates.length}}
+  <div class="col-md-6 certificate-list">
+    <h3>Current certificates:</h3>
+
+    {{#each certificates as |certificate|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/certificate/{{certificate.id}}">{{certificate.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{certificate.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>
