@@ -3,14 +3,15 @@ const { Doctor, Patient, MedicalCertificate } = require('../models');
 
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   res.render('homepage', {
     //not sure if req.session needs to be here
+    // Th
     logged_in: req.session.logged_in,
   });
 });
 
-router.get('/doctor_login', async (req, res) => {
+router.get('/doctor-login', async (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;
@@ -19,7 +20,7 @@ router.get('/doctor_login', async (req, res) => {
   res.render('doctorLogin');
 });
 
-router.get('/patient_login', async (req, res) => {
+router.get('/patient-login', async (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;
@@ -73,7 +74,7 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 // Get doctors profile with Auth
-router.get('/doctor_profile', withAuth, async (req, res) => {
+router.get('/doctor-profile', withAuth, async (req, res) => {
   try {
     //Find doctor by session ID
     // includes any patient that has requested a specific doctor to apporve the request
@@ -113,7 +114,7 @@ router.get('/patients', withAuth, async (req, res) => {
   }
 });
 
-router.get('/patient_profile', withAuth, async (req, res) => {
+router.get('/patient-profile', withAuth, async (req, res) => {
   try {
     const patientData = await Patient.findByPK(req.session.user_id, {
       include: [
