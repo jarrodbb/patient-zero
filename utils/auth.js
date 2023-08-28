@@ -1,5 +1,5 @@
 const withAuth = (req, res, next) => {
-  if (!req.session.logged_in && req.path !== '/') {
+  if (!req.session.logged_in) {
     if (req.path === '/patient-profile') {
       res.redirect('/patient-login');
     } else if (req.path === '/doctor-profile') {

@@ -12,14 +12,17 @@
     <div>
       <header>
         <h1>
-          <a href='/'>Patient/Doctor Portal</a>
+          {{!-- <a href='/'>Patient/Doctor Portal</a> --}}
+          Chuck A Sickie!
         </h1>
         <nav>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
-            <a href='/profile'>profile</a>
-            |
+            {{!-- <a href='/profile'>profile</a>
+            | --}}
             <button class='no-button' id='logout'>logout</button>
+            {{else}}
+            <p>Log in to chuck a sickie</p>
           {{/if}}
         </nav>
       </header>
