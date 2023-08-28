@@ -3,7 +3,7 @@ const { Doctor, Patient, MedicalCertificate } = require('../models');
 
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
   res.render('homepage', {
     //not sure if req.session needs to be here
     // Th
