@@ -12,13 +12,13 @@
     <div>
       <header>
         <h1>
-          <a href='/'>Patient/Doctor Portal</a>
+          <a href='/'>Sickie.com</a>
+          <span role="img" aria-label="sick">🩺🤒</span>
         </h1>
         <nav>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
-            <a href='/profile'>profile</a>
-            |
+            <a href='/profile'>profile</a> |
             <button class='no-button' id='logout'>logout</button>
           {{else}}
             <a href='/login'>login</a>
@@ -26,6 +26,7 @@
         </nav>
       </header>
       <main>
+        <main class="container container-fluid mt-5">
         <!-- Render the sub layout -->
         {{{body}}}
       </main>
