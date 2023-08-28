@@ -30,30 +30,7 @@ router.get('/patient-login', async (req, res) => {
 });
 
 router.get('/profile', withAuth, async (req, res) => {
-  if (Doctor) {
-    try {
-      const doctorData = await Doctor.findByPK(req.session.user_id, {
-        include: [
-          {
-            model: Patient,
-            attributes: ['name'],
-          },
-        ],
-      });
-
-      const doctor = doctorData.get({ plain: true });
-
-      req.render('doctor', {
-        ...doctor,
-
-        logged_in: req.session.logged_in,
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }
-
-  if (Patient)
+  if (!req.session.is_doctor) {
     try {
       const patientData = await Patient.findByPK(req.session.user_id, {
         include: [
@@ -71,6 +48,27 @@ router.get('/profile', withAuth, async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     }
+
+    try {
+      const doctorData = await Doctor.findByPK(req.session.user_id, {
+        include: [
+          {
+            model: Patient,
+            attributes: ['name'],
+          },
+        ],
+      });
+
+      const doctor = doctorData.get({ plain: true });
+
+      req.render('doctor', {
+        ...doctor,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
 });
 
 // Get doctors profile with Auth
