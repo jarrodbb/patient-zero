@@ -18,20 +18,20 @@ const { Doctor, Patient } = require('../../models');
 // });
 
 // Create user - Not sure we are going to bother with this
-router.post('/', async (req, res) => {
-  try {
-    const doctorData = await Doctor.create(req.body);
+// router.post('/', async (req, res) => {
+//   try {
+//     const doctorData = await Doctor.create(req.body);
 
-    req.session.save(() => {
-      req.session.user_id = doctorData.id;
-      req.session.logged_in = true;
+//     req.session.save(() => {
+//       req.session.user_id = doctorData.id;
+//       req.session.logged_in = true;
 
-      res.status(200).json(doctorData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+//       res.status(200).json(doctorData);
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 // Doctor login - checks password
 router.post('/login', async (req, res) => {

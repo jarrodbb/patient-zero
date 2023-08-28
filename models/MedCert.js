@@ -16,7 +16,7 @@ MedicalCertificate.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        //this is the foreign key for patients\\
+        // This is the foreign key for patients
         model: 'patient',
         key: 'patient_id',
       },
@@ -42,6 +42,10 @@ MedicalCertificate.init(
     // reason: {
     //   type: DataTypes.STRING,
     // },
+    is_approved: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false, // Default value is set to false
+    }
   },
   {
     sequelize,
