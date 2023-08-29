@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Doctor, Patient, MedicalCertificate } = require('../models');
-
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
@@ -29,45 +28,86 @@ router.get('/patient-login', async (req, res) => {
   res.render('patientLogin');
 });
 
+// router.get('/profile', withAuth, async (req, res) => {
+//   console.log(req.session.is_doctor);
+//   try {
+//     if (!req.session.is_doctor) {
+//       const patientData = await Patient.findByPk(req.session.user_id, {
+//         include: [
+//           {
+//             model: MedicalCertificate,
+//           },
+//         ],
+//       });
+//       const patient = patientData.get({ plain: true });
+//       res.send('patient');
+//       // res.render('patientProfile', {
+//       //   ...patient,
+//       //   logged_in: req.session.logged_in,
+//       // });
+//     }
+//     const doctorData = await Doctor.findByPk(req.session.user_id, {
+//       include: [
+//         {
+//           model: Patient,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
+
+//     const doctor = doctorData.get({ plain: true });
+//     res.send('doctor');
+//     //   res.render('doctor', {
+//     //     ...doctor,
+//     //     logged_in: req.session.logged_in,
+//     //   });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get('/profile', withAuth, async (req, res) => {
+  console.log(req.session.is_doctor);
+
   if (!req.session.is_doctor) {
     try {
-      const patientData = await Patient.findByPK(req.session.user_id, {
-        include: [
-          {
-            model: MedicalCertificate,
-          },
-        ],
+      const patientData = await Patient.findByPk(req.session.user_id, {
+        include: [{ model: MedicalCertificate }],
       });
+
       const patient = patientData.get({ plain: true });
 
-      req.render('patient', {
+      res.render('patientProfile', {
         ...patient,
         logged_in: req.session.logged_in,
       });
     } catch (err) {
+      console.error(err);
       res.status(500).json(err);
     }
+    return;
+    // res.send('patient');
+  }
+  // res.send('doctor');
+  try {
+    const doctorData = await Doctor.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Patient,
+          attributes: ['patient_id', 'name'],
+        },
+      ],
+    });
 
-    try {
-      const doctorData = await Doctor.findByPK(req.session.user_id, {
-        include: [
-          {
-            model: Patient,
-            attributes: ['name'],
-          },
-        ],
-      });
+    const doctor = doctorData.get({ plain: true });
 
-      const doctor = doctorData.get({ plain: true });
-
-      req.render('doctor', {
-        ...doctor,
-        logged_in: req.session.logged_in,
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
+    res.render('doctor', {
+      ...doctor,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
   }
 });
 
@@ -77,7 +117,7 @@ router.get('/doctor-profile', withAuth, async (req, res) => {
     //Find doctor by session ID
     // includes any patient that has requested a specific doctor to apporve the request
     // Need to add - Include patients where doctor preference is not set
-    const doctorData = await Doctor.findByPK(req.session.user_id, {
+    const doctorData = await Doctor.findByPk(req.session.user_id, {
       include: [
         {
           model: Patient,
@@ -114,7 +154,7 @@ router.get('/patients', withAuth, async (req, res) => {
 
 router.get('/patient-profile', withAuth, async (req, res) => {
   try {
-    const patientData = await Patient.findByPK(req.session.user_id, {
+    const patientData = await Patient.findByPk(req.session.user_id, {
       include: [
         {
           model: MedicalCertificate,
