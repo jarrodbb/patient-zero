@@ -67,7 +67,7 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = patientData.id;
+      req.session.user_id = patientData.patient_id;
       // getting undefined for req.session.user_id
       console.log(req.session.user_id);
       req.session.logged_in = true;
