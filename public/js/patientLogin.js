@@ -1,4 +1,4 @@
-var generator = require('generate-password');
+// var generator = require('generate-password');
 
 const passwordGenerate = document.getElementById('passwordGenerator');
 const passwordFormContent = document.getElementById('passwordGenerator');
@@ -49,15 +49,15 @@ const signupFormHandler = async (event) => {
   }
 };
 
-const passwordContent = () => {
-  const randomPassword = generator.generate({
-    length: 6,
-    numbers: true,
-    symbols: true,
-  });
+// const passwordContent = () => {
+//   const randomPassword = generator.generate({
+//     length: 6,
+//     numbers: true,
+//     symbols: true,
+//   });
 
-  passwordFormContent.textContent = randomPassword;
-};
+//   passwordFormContent.textContent = randomPassword;
+// };
 
 // const newPassword = generator.generate({
 //   length: 6,
@@ -77,4 +77,4 @@ document
 //   .getElementById('passwordGenerator')
 //   .addEventListener('submit', passwordContent);
 
-passwordGenerate.on('click', '.btn', passwordContent);
+// passwordGenerate.on('click', '.btn', passwordContent);
