@@ -1,7 +1,7 @@
 # Take a Sickie
 ## 📄 Description 
 Latest video game release? Hungover from last night? Important work meeting with the boss? Say no more our doctors have a medical certificate for you.
-No questions asked
+No questions asked.
 
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 ![Inquirer Version](https://img.shields.io/badge/Inquirer-8.2.4-blue.svg)
@@ -14,8 +14,9 @@ No questions asked
 ![mysql2](https://img.shields.io/badge/mysql2-v2.2.5-blueviolet)
 ![sequelize](https://img.shields.io/badge/sequelize-v6.3.5-important)
 ![eslint](https://img.shields.io/badge/eslint-v7.12.1-lightgrey)
+![tailwindcss](https://img.shields.io/badge/Tailwind%20CSS-v2.2.16-red)
 ![bootstrap](https://img.shields.io/badge/Bootstrap-CSS%20Framework-blueviolet)
-
+![nodemon](https://img.shields.io/badge/nodemon-3.0.1-black)
 ## 🪛 Technologies used 
 <p><a href="https://nodejs.org/">Node.js</a></p>
 <p><a href="https://www.npmjs.com/">NPM</a></p>
@@ -28,17 +29,19 @@ No questions asked
 <p><a href="https://www.npmjs.com/package/bcrypt">bcrypt</a></p>
 <p><a href="https://heroku.com/">Heroku</a></p>
 <p><a href="https://www.npmjs.com/package/eslint">ESLint</a></p>
+<p><a href="https://www.npmjs.com/package/tailwindcss">Tailwind CSS</a></p>
 <p><a href="https://www.npmjs.com/package/bootstrap">Bootstrap</a></p>
+<p><a href="https://nodemon.io/">nodemon</a></p>
 
 ## 📓 Table of Contents
-* [Installation](# 🖥️ Installation)
-* [Usage](# 💬 usage)
-* [Screenshot](# 🖼️ screenshot)
-* [Video](# 📹 Video)
-* [License](# ⚖️ license)
-* [Contributing](# 🤝 contributing)
-* [Tests](# 🛠️ tests)
-* [Questions](# ❔ questions)
+- [Installation](#🖥️Installation)
+- [Usage](#💬usage)
+- [Screenshot](#🖼️screenshot)
+- [Video](#📹Video)
+- [License](#⚖️license)
+- [Contributing](#🤝contributing)
+- [Tests](#🛠️tests)
+- [Questions](#❔questions)
     
 ## 🖥️ Installation 
 Deployed on Heroku 
