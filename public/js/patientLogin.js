@@ -1,5 +1,5 @@
 const passwordGenerate = document.getElementById('passwordGenerator');
-const passwordFormContent = document.getElementById('passwordGenerator');
+const passwordFormContent = document.getElementById('password-signup');
 
 const loginFormHandler = async (event) => {
   event.preventDefault();
@@ -47,11 +47,7 @@ const signupFormHandler = async (event) => {
   }
 };
 
-const passwordContent = () => {
-  const randomPassword = fetch('/api/generator');
-
-  passwordFormContent.textContent = randomPassword;
-};
+// const passwordContent = () => {};
 
 // const newPassword = generator.generate({
 //   length: 6,
@@ -67,8 +63,12 @@ document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
 
-document
-  .getElementById('passwordGenerator')
-  .addEventListener('submit', passwordContent);
+// document
+//   .getElementById('passwordGenerator')
+//   .addEventListener('submit', passwordContent);
 
-passwordGenerate.on('click', '.btn', passwordContent);
+passwordGenerate.addEventListener('click', (event) => {
+  passwordFormContent.value = '';
+  const randomPassword = fetch('/api/generator');
+  passwordFormContent.value = randomPassword;
+});

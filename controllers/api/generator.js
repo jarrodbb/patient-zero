@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const generator = require('generate-password');
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
   try {
-    const password = await generator.generate({
-      length: 6,
+    const password = generator.generate({
+      length: 8,
       numbers: true,
       symbols: true,
     });
