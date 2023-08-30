@@ -8,9 +8,9 @@ router.post('/', async (req, res) => {
     const patientData = await Patient.create(req.body);
 
     req.session.save(() => {
-      req.session.user_id = patientData.id;
+      req.session.user_id = patientData.patient_id;
       req.session.logged_in = true;
-
+      req.session.is_doctor = false;
       res.status(200).json(patientData);
     });
   } catch (err) {
