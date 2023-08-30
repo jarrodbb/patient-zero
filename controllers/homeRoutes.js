@@ -28,46 +28,11 @@ router.get('/patient-login', async (req, res) => {
   res.render('patientLogin');
 });
 
-// router.get('/profile', withAuth, async (req, res) => {
-//   console.log(req.session.is_doctor);
-//   try {
-//     if (!req.session.is_doctor) {
-//       const patientData = await Patient.findByPk(req.session.user_id, {
-//         include: [
-//           {
-//             model: MedicalCertificate,
-//           },
-//         ],
-//       });
-//       const patient = patientData.get({ plain: true });
-//       res.send('patient');
-//       // res.render('patientProfile', {
-//       //   ...patient,
-//       //   logged_in: req.session.logged_in,
-//       // });
-//     }
-//     const doctorData = await Doctor.findByPk(req.session.user_id, {
-//       include: [
-//         {
-//           model: Patient,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
 
-//     const doctor = doctorData.get({ plain: true });
-//     res.send('doctor');
-//     //   res.render('doctor', {
-//     //     ...doctor,
-//     //     logged_in: req.session.logged_in,
-//     //   });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 router.get('/profile', withAuth, async (req, res) => {
   console.log(req.session.is_doctor);
+  console.log(req.session.user_id);
 
   if (!req.session.is_doctor) {
     try {
@@ -86,9 +51,9 @@ router.get('/profile', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
     return;
-    // res.send('patient');
+    
   }
-  // res.send('doctor');
+  
   try {
     const doctorData = await Doctor.findByPk(req.session.user_id, {
       include: [
@@ -111,32 +76,32 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-// Get doctors profile with Auth
-router.get('/doctor-profile', withAuth, async (req, res) => {
-  try {
-    //Find doctor by session ID
-    // includes any patient that has requested a specific doctor to apporve the request
-    // Need to add - Include patients where doctor preference is not set
-    const doctorData = await Doctor.findByPk(req.session.user_id, {
-      include: [
-        {
-          model: Patient,
-          attributes: ['name'],
-        },
-      ],
-    });
+// // Get doctors profile with Auth
+// router.get('/doctor-profile', withAuth, async (req, res) => {
+//   try {
+//     //Find doctor by session ID
+//     // includes any patient that has requested a specific doctor to apporve the request
+//     // Need to add - Include patients where doctor preference is not set
+//     const doctorData = await Doctor.findByPk(req.session.user_id, {
+//       include: [
+//         {
+//           model: Patient,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
 
-    const doctor = doctorData.get({ plain: true });
+//     const doctor = doctorData.get({ plain: true });
 
-    req.render('doctor', {
-      ...doctor,
+//     req.render('doctor', {
+//       ...doctor,
 
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/patients', withAuth, async (req, res) => {
   try {
