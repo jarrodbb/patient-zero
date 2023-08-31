@@ -34,7 +34,6 @@ const { Doctor, Patient } = require('../../models');
 // });
 
 
-
 // Doctor login - checks password
 router.post('/login', async (req, res) => {
   try {

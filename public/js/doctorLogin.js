@@ -1,6 +1,3 @@
-const express = require('express');
-const app = express();
-
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -47,20 +44,20 @@ const loginFormHandler = async (event) => {
 //   }
 // };
 
-app.post('/doctor/login', async (req, res) => {
-  try {
-    const loggedInDoctor = await loginDoctor(req.body.email, req.body.password);
+// app.post('/doctor/login', async (req, res) => {
+//   try {
+//     const loggedInDoctor = await loginDoctor(req.body.email, req.body.password);
 
-    if (loggedInDoctor) {
-      res.render('doctors', { doctor: loggedInDoctor });
-    } else {
-      res.render('login', { error: 'Login failed' });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server Error');
-  }
-});
+//     if (loggedInDoctor) {
+//       res.render('doctors', { doctor: loggedInDoctor });
+//     } else {
+//       res.render('login', { error: 'Login failed' });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Server Error');
+//   }
+// });
 
 document
   .querySelector('.login-form')
