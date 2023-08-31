@@ -1,7 +1,7 @@
 # Take a Sickie
 ## 📄 Description 
 Latest video game release? Hungover from last night? Important work meeting with the boss? Say no more our doctors have a medical certificate for you.
-No questions asked.
+No questions asked. 
 
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 ![Inquirer Version](https://img.shields.io/badge/Inquirer-8.2.4-blue.svg)
@@ -17,6 +17,7 @@ No questions asked.
 ![tailwindcss](https://img.shields.io/badge/Tailwind%20CSS-v2.2.16-red)
 ![bootstrap](https://img.shields.io/badge/Bootstrap-CSS%20Framework-blueviolet)
 ![nodemon](https://img.shields.io/badge/nodemon-3.0.1-black)
+![Password-Generator](https://img.shields.io/badge/Password-Generator-green)
 ## 🪛 Technologies used 
 <p><a href="https://nodejs.org/">Node.js</a></p>
 <p><a href="https://www.npmjs.com/">NPM</a></p>
@@ -32,6 +33,7 @@ No questions asked.
 <p><a href="https://www.npmjs.com/package/tailwindcss">Tailwind CSS</a></p>
 <p><a href="https://www.npmjs.com/package/bootstrap">Bootstrap</a></p>
 <p><a href="https://nodemon.io/">nodemon</a></p>
+<p><a href="https://www.npmjs.com/package/generate-password">Password generator</a></p>
 
 ## 📓 Table of Contents
 - [Installation](#Installation)
@@ -50,10 +52,9 @@ https://shrouded-thicket-43089-7595b3319402.herokuapp.com/
 ## 💬Usage 
 For illegal purposes only
 
-
 ## 🖼️Screenshot
-![Alt Text] Insert Gif here
-
+Patient Signup and login 
+![Patient-Signup](./assets/Patient_Signup.png)
 
 ## 📹Video
 Insert Video recording here 
