@@ -1,3 +1,6 @@
+const passwordGenerate = document.getElementById('passwordGenerator');
+const passwordFormContent = document.getElementById('password-signup');
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -44,6 +47,14 @@ const signupFormHandler = async (event) => {
   }
 };
 
+// const passwordContent = () => {};
+
+// const newPassword = generator.generate({
+//   length: 6,
+//   numbers: true,
+//   symbols: true,
+// });
+
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
@@ -51,3 +62,15 @@ document
 document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
+
+// document
+//   .getElementById('passwordGenerator')
+//   .addEventListener('submit', passwordContent);
+
+passwordGenerate.addEventListener('click', async (event) => {
+  passwordFormContent.value = '';
+  const response = await fetch('/api/generator');
+  const randomPassword = await response.text();
+  passwordFormContent.value = randomPassword.replace(/['"]+/g, '');
+  console.log(passwordFormContent.value);
+});

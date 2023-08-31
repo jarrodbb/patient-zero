@@ -8,9 +8,9 @@ router.post('/', async (req, res) => {
     const patientData = await Patient.create(req.body);
 
     req.session.save(() => {
-      req.session.user_id = patientData.id;
+      req.session.user_id = patientData.patient_id;
       req.session.logged_in = true;
-
+      req.session.is_doctor = false;
       res.status(200).json(patientData);
     });
   } catch (err) {
@@ -67,7 +67,9 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = patientData.id;
+      req.session.user_id = patientData.patient_id;
+      req.session.is_doctor = false;
+      console.log(req.session.is_doctor);
       // getting undefined for req.session.user_id
       console.log(req.session.user_id);
       req.session.logged_in = true;
