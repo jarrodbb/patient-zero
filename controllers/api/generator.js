@@ -4,7 +4,7 @@ const generator = require('generate-password');
 router.get('/', (req, res) => {
   try {
     const password = generator.generate({
-      length: 4,
+      length: 6,
       numbers: true,
       symbols: true,
     });
