@@ -45,5 +45,5 @@ sequelize.sync({ force: false }).then(() => {
   console.log(`Server is available at http://localhost:${PORT}/`); //You can just click the link instead here
 });
 
-// Hey guys!!! you can use npx nodemon in the terminal now
+//  you can use npx nodemon in the terminal now
 //  nodemon monitors your project files for changes and automatically restarts your Node.js application when changes are detected

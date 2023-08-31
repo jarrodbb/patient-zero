@@ -29,23 +29,10 @@ MedicalCertificate.init(
         key: 'doctor_id',
       },
     },
-    // patient_name: {
-    //   type: DataTypes.STRING,
-    // },
-    // patient_date_of_birth: {
-    //   type: DataTypes.DATEONLY,
-    // },
-    // date: {
-    //   type: DataTypes.DATEONLY,
-    //   defaultValue: DataTypes.NOW,
-    // },
-    // reason: {
-    //   type: DataTypes.STRING,
-    // },
     is_approved: {
       type: DataTypes.BOOLEAN,
       defaultValue: false, // Default value is set to false
-    }
+    },
   },
   {
     sequelize,
