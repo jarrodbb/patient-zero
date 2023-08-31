@@ -1,1 +1,89 @@
-<h2>Patient </h2>
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{patient.name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Request a Meical Certificate:</h3>
+
+    <form class="form new-project-form">
+      <div class="form-group">
+        <label for="project-name">Full name:</label>
+        <input class="form-input" type="text" id="project-name" name="project-name" />
+      </div>
+      <div class="form-group">
+        <label for="project-desc">description:</label>
+        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Request</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if request.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
+
+    {{#each request as |request|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/project/">{{patient.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{project.name}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<div class="col-md-6">
+  <h3>Your Medical history:</h3>
+
+  <form class="form new-project-form">
+    <div class="form-group">
+      <label for="request-reason">Diabetes:</label>
+      <select class="form-input" id="request-reason" name="request-reason">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="request-reason">Allergies:</label>
+      <select class="form-input" id="request-reason" name="request-reason">
+        <option value="nut">Nuts</option>
+        <option value="pollen">Pollen</option>
+        <option value="none">None</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="request-reason">Heart disease:</label>
+      <select class="form-input" id="request-reason" name="request-reason">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="request-reason">High blood pressure:</label>
+      <select class="form-input" id="request-reason" name="request-reason">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="request-reason">Kidney or liver disease:</label>
+      <select class="form-input" id="request-reason" name="request-reason">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </form>
+</div>
+
+
+<script src="./js/profile.js"></script>
