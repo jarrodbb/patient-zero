@@ -87,24 +87,24 @@ router.get('/patients', withAuth, async (req, res) => {
   }
 });
 
-router.get('/patient-profile', withAuth, async (req, res) => {
-  try {
-    const patientData = await Patient.findByPk(req.session.user_id, {
-      include: [
-        {
-          model: MedicalCertificate,
-        },
-      ],
-    });
-    const patient = patientData.get({ plain: true });
+// router.get('/patient-profile', withAuth, async (req, res) => {
+//   try {
+//     const patientData = await Patient.findByPk(req.session.user_id, {
+//       include: [
+//         {
+//           model: MedicalCertificate,
+//         },
+//       ],
+//     });
+//     const patient = patientData.get({ plain: true });
 
-    req.render('patient', {
-      ...patient,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     req.render('patient', {
+//       ...patient,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
