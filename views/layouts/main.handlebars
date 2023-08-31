@@ -46,7 +46,13 @@
   <main>
     <main class="container container-fluid mt-5">
     <!-- Render the sub layout -->
-    {{{body}}}
+    {{#if doctor}}
+    <!-- Render doctor's dashboard -->
+      {{> doctor}}
+    {{else}}
+    <!-- Render default content (e.g., homepage) -->
+      {{{ body }}}
+    {{/if}}
   </main>
 
   <!-- Render script for logged in users only -->
