@@ -67,8 +67,10 @@ document
 //   .getElementById('passwordGenerator')
 //   .addEventListener('submit', passwordContent);
 
-passwordGenerate.addEventListener('click', (event) => {
+passwordGenerate.addEventListener('click', async (event) => {
   passwordFormContent.value = '';
-  const randomPassword = fetch('/api/generator');
-  passwordFormContent.value = randomPassword;
+  const response = await fetch('/api/generator');
+  const randomPassword = await response.text();
+  passwordFormContent.value = randomPassword.replace(/['"]+/g, '');
+  console.log(passwordFormContent.value);
 });
