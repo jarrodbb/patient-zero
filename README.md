@@ -34,33 +34,34 @@ No questions asked.
 <p><a href="https://nodemon.io/">nodemon</a></p>
 
 ## 📓 Table of Contents
-- [Installation](#🖥️Installation)
-- [Usage](#💬usage)
-- [Screenshot](#🖼️screenshot)
-- [Video](#📹Video)
-- [License](#⚖️license)
-- [Contributing](#🤝contributing)
-- [Tests](#🛠️tests)
-- [Questions](#❔questions)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Screenshot](#Screenshot)
+- [Video](#Video)
+- [License](#License)
+- [Contributing](#Contributing)
+- [Tests](#Tests)
+- [Questions](#Questions)
     
-## 🖥️ Installation 
-Deployed on Heroku 
+## 🖥️Installation 
+Deployed on Heroku at 
+https://shrouded-thicket-43089-7595b3319402.herokuapp.com/
   
-## 💬 Usage 
+## 💬Usage 
 For illegal purposes only
 
 
-## 🖼️ Screenshot
+## 🖼️Screenshot
 ![Alt Text] Insert Gif here
 
 
-## 📹 Video
+## 📹Video
 Insert Video recording here 
 
-## ⚖️ License 
+## ⚖️License 
 This project is licensed under MIT
   
-## 🤝 Contributing 
+## 🤝Contributing 
 Brian Trang,
 Jarrod Blanning,
 Thorsten Beowulf,
@@ -68,10 +69,10 @@ Victor Chan,
 Hailin Ruan
 With thanks to USYD
   
-## 🛠️ Tests
+## 🛠️Tests
 N/A
  
-## ❔ Questions
+## ❔Questions
 If you have any questions about this project, please contact me directly at brian.trang9@gmail.com. Feel free to view more of our projects at 
 https://github.com/MakeRedundant
 https://github.com/ThorstenBeowulf
