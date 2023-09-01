@@ -8,8 +8,10 @@ class Patient extends Model {
   }
 }
 
+// Patient model properties
 Patient.init(
   {
+    // Patient attributes
     patient_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -101,3 +103,7 @@ Patient.init(
 );
 
 module.exports = Patient;
+
+// Summary
+/// Defines patient model with attributes for patient info
+/// the model configuration specifies Sequelize-specific options such as hooks for password hashing, timestamps, table name, and model name.

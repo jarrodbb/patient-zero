@@ -85,7 +85,8 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-// Router to
+// Router to render doctor as well as passing patients array as data to that view (doctor seeing patient)
+// withAuth middleware used to check if user is logged in (in this case doctors)
 router.get('/patients', withAuth, async (req, res) => {
   try {
     patientData = await Patient.findAll({
@@ -99,7 +100,9 @@ router.get('/patients', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// Router to render updated patients
+// spreads ... the properties of the patient object into the rednering context
+// includes a logged in property to render whether user is logged in or not
 router.get('/updatePatient', withAuth, async (req, res) => {
   try {
     const patientData = await Patient.findByPk(req.session.user_id, {
@@ -119,7 +122,7 @@ router.get('/updatePatient', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Router to render patient based on id and medCert
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const patientData = await Patient.findByPk(req.params.id, {
@@ -139,7 +142,7 @@ router.get('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Router to render medical certificate with patient by id
 router.get('/patient-certificate', withAuth, async (req, res) => {
   try {
     const medCerts = await MedicalCertificate.findAll({

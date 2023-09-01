@@ -100,7 +100,7 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+// Get doctor by ID
 router.get('/:id', (req, res) => {
   Doctor.findByPk(req.params.id, {
     attributes: ['doctor_id', 'name', 'email'],
