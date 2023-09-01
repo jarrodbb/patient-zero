@@ -8,7 +8,7 @@ const updatePatientInfo = async (event) => {
   const high_blood_pressure = document.querySelector('#blood').value;
   const kidney_or_liver_disease = document.querySelector('#kidney').value;
 
-  if (allergies && medication) {
+  if (allergies && medication_list) {
     const response = await fetch(`/api/patient`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -25,55 +25,55 @@ const updatePatientInfo = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      return document.location.replace('/profile');
     } else {
-      alert('Failed to create project');
+      alert('Failed to update');
     }
   }
 
-  //   if (allergies) {
-  //     const response = await fetch(`/api/projects`, {
-  //       method: 'PUT',
-  //       body: JSON.stringify({
-  //         diabetes,
-  //         allergies,
-  //         heartDisease,
-  //         bloodPressure,
-  //         kidneyLiver,
-  //       }),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
+  if (allergies) {
+    const response = await fetch(`/api/patient`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        diabetes,
+        allergies,
+        heart_disease,
+        high_blood_pressure,
+        kidney_or_liver_disease,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  //     if (response.ok) {
-  //       document.location.replace('/profile');
-  //     } else {
-  //       alert('Failed to create project');
-  //     }
-  //   }
+    if (response.ok) {
+      return document.location.replace('/profile');
+    } else {
+      alert('Failed to update');
+    }
+  }
 
-  //   if (medication) {
-  //     const response = await fetch(`/api/projects`, {
-  //       method: 'PUT',
-  //       body: JSON.stringify({
-  //         diabetes,
-  //         medication,
-  //         heartDisease,
-  //         bloodPressure,
-  //         kidneyLiver,
-  //       }),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
+  if (medication_list) {
+    const response = await fetch(`/api/patient`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        diabetes,
+        medication_list,
+        heart_disease,
+        high_blood_pressure,
+        kidney_or_liver_disease,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  //     if (response.ok) {
-  //       document.location.replace('/profile');
-  //     } else {
-  //       alert('Failed to create project');
-  //     }
-  //   }
+    if (response.ok) {
+      return document.location.replace('/profile');
+    } else {
+      alert('Failed to update');
+    }
+  }
 };
 
 document

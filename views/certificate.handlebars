@@ -4,11 +4,11 @@
   </div>
 </div>
 
- {{#if medical_certificates.length}}
+
     <div class='col-md-6 project-list'>
       <h3>Medical Certificate Requests:</h3>
 
-      {{#each medical_certificates as |medCert|}}
+      {{#each medicalCerificates as |medCert|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
             <h4>{{medCert.reason}}</h4>
@@ -22,7 +22,6 @@
         </div>
       {{/each}}
     </div>
-  {{/if}}
 
 {{!-- <div class='row mt-4'>
   <div class='col-md-6'>

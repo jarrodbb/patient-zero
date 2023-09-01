@@ -109,7 +109,6 @@ router.get('/updatePatient', withAuth, async (req, res) => {
     const patient = patientData.get({ plain: true });
 
     console.log(patient);
-    console.log(patient.doctor);
 
     res.render('updatePatient', {
       ...patient,
@@ -143,24 +142,48 @@ router.get('/:id', withAuth, async (req, res) => {
 
 router.get('/patient-certificate', withAuth, async (req, res) => {
   try {
-    const patientData = await Patient.findByPk(req.session.user_id, {
-      include: [{ model: MedicalCertificate }],
+    const medCerts = await MedicalCertificate.findAll({
+      where: { patient_id: req.session.user_id },
+      include: [{ model: Patient }],
     });
 
-    const patient = patientData.get({ plain: true });
+    const medicalCerificates = medCerts.map((certificate) =>
+      certificate.get({ plain: true })
+    );
 
-    console.log(patient);
+    console.log(medicalCerificates);
 
     res.render('certificate', {
-      ...patient,
+      ...medicalCerificates,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.error(err);
-    console.log('fail');
+
     res.status(500).json(err);
   }
 });
+
+// router.get('/patient-certificate', withAuth, async (req, res) => {
+//   try {
+//     const patientData = await Patient.findByPk(req.session.user_id, {
+//       include: [{ model: MedicalCertificate }],
+//     });
+
+//     const patient = patientData.get({ plain: true });
+
+//     console.log(patient);
+
+//     res.render('certificate', {
+//       ...patient,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     console.error(err);
+
+//     res.status(500).json(err);
+//   }
+// });
 
 // router.get('/patient-certificate', withAuth, async (req, res) => {
 //   try {

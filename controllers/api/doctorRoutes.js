@@ -33,7 +33,6 @@ const { Doctor, Patient } = require('../../models');
 //   }
 // });
 
-
 // Doctor login - checks password
 router.post('/login', async (req, res) => {
   try {
@@ -62,7 +61,7 @@ router.post('/login', async (req, res) => {
       console.log(req.session.user_id);
       req.session.is_doctor = true;
       req.session.logged_in = true;
-      console.log(req.session.is_doctor)
+      console.log(req.session.is_doctor);
 
       res.json({ user: doctorData, message: 'You are now logged in!' });
     });

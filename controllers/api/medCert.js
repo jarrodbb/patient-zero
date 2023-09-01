@@ -26,7 +26,7 @@ router.post('/', withAuth, async (req, res) => {
     });
 
     req.session.save(() => {
-      // req.session.user_id = req.session.user_id;
+      // req.session.user_id = patient_id;
       req.session.logged_in = true;
 
       res.status(200).json(certificateData);
