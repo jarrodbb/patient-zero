@@ -1,11 +1,14 @@
+//Med Cert Model
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // const Patient = require("./Patient");
 
 class MedicalCertificate extends Model {}
 
+// Med Cert properties (columns)
 MedicalCertificate.init(
   {
+    // Attributes for each property
     certificate_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -48,3 +51,7 @@ MedicalCertificate.init(
 );
 
 module.exports = MedicalCertificate;
+
+// Summary
+/// Defines a model for a MedCert with with attributes like reason and is_approved
+/// Should allow patient responses to be rendered

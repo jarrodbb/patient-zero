@@ -74,7 +74,7 @@ With thanks to USYD
 N/A
  
 ## ❔Questions
-If you have any questions about this project, please contact me directly at brian.trang9@gmail.com. Feel free to view more of our projects at 
+If you have any questions about this project, please contact me directly at Brian.trang9@gmail.com. Feel free to view more of our projects at 
 https://github.com/MakeRedundant
 https://github.com/ThorstenBeowulf
 https://github.com/jarrodbb
