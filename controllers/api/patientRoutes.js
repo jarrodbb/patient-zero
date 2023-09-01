@@ -5,13 +5,17 @@ const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
   try {
-    const patientData = await Patient.create(req.body);
+    const patientData = await Patient.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
 
     req.session.save(() => {
       req.session.user_id = patientData.patient_id;
       req.session.logged_in = true;
       req.session.is_doctor = false;
-      res.status(200).json(patientData);
+      res.json(patientData);
     });
   } catch (err) {
     res.status(400).json(err);
