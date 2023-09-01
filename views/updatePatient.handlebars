@@ -1,0 +1,96 @@
+<div class='row'>
+  <div class='col-auto'>
+    <h2> {{name}} did you want to update your profile?</h2>
+    {{!-- {{#if doctor.length}}
+  <div class="col-md-6 project-list">
+    <h3>Assigned Doctor</h3>
+
+    {{#each doctor as |doctor|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4>{{doctor.name}}</h4>
+      </div>
+      
+    {{/each}}
+  </div>
+  {{/if}}
+</div>   --}}
+
+    {{!-- <p>{{doctor.name}}</p> --}}
+
+  </div>
+</div>
+
+<div class='col-md-6'>
+  <div class='text-center'>
+    <h2>{{name}}</h2>
+    <p>Diabetes {{diabetes}}</p>
+    <p>heart disease {{heart_disease}}</p>
+    <p>High blood pressure {{high_blood_pressure}}</p>
+    <p>Kidney or liver disease {{kidney_or_liver_disease}}</p>
+    <p>medication {{medication_list}}</p>
+  </div>
+</div>
+
+<div class='col-md-6'>
+  <h3>Update Medical history:</h3>
+
+  <form class='form patient-update'>
+    <div class='form-group'>
+      <label for='diabetes'>Diabetes:</label>
+      <select class='form-input' id='diabetes'>
+        <option value={{diabetes}}>{{diabetes}}</option>
+        <option value='true'>Yes</option>
+        <option value='false'>No</option>
+      </select>
+    </div>
+    <div class='form-group'>
+      <label for='allergies'>Allergies:</label>
+      <textarea
+        class='form-input'
+        id='allergies'
+        name='allergies-desc'
+      ></textarea>
+    </div>
+    <div class='form-group'>
+      <label for='medication'>Medication:</label>
+      <textarea
+        class='form-input'
+        id='medication'
+        name='medication-desc'
+      ></textarea>
+    </div>
+    <div class='form-group'>
+      <label for='heart'>Heart disease:</label>
+      <select class='form-input' id='heart'>
+        <option value={{heart_disease}}>{{heart_disease}}</option>
+        <option value='true'>Yes</option>
+        <option value='false'>No</option>
+      </select>
+    </div>
+    <div class='form-group'>
+      <label for='blood'>High blood pressure:</label>
+      <select class='form-input' id='blood'>
+        <option value={{high_blood_pressure}}>{{high_blood_pressure}}</option>
+        <option value='true'>Yes</option>
+        <option value='false'>No</option>
+      </select>
+    </div>
+    <div class='form-group'>
+      <label for='kidney'>Kidney or liver disease:</label>
+      <select class='form-input' id='kidney'>
+        <option
+          value={{kidney_or_liver_disease}}
+        >{{kidney_or_liver_disease}}</option>
+        <option value='true'>Yes</option>
+        <option value='false'>No</option>
+      </select>
+    </div>
+
+    <div class='form-group'>
+      <button type='submit' class='btn btn-primary'>Update</button>
+    </div>
+  </form>
+</div>
+
+<script src='./js/updatePatient.js'></script>
