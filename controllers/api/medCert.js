@@ -19,10 +19,14 @@ const withAuth = require('../../utils/auth');
 // Create medical certificate
 router.post('/', withAuth, async (req, res) => {
   try {
-    const certificateData = await MedicalCertificate.create(req.body);
+    const certificateData = await MedicalCertificate.create({
+      patient_id: req.session.user_id,
+      doctor_id: req.body.doctor_id,
+      reason: req.body.reason,
+    });
 
     req.session.save(() => {
-      req.session.user_id = certificateData.id;
+      // req.session.user_id = req.session.user_id;
       req.session.logged_in = true;
 
       res.status(200).json(certificateData);
@@ -32,12 +36,10 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//Get all Medical Certificate 
-
+//Get all Medical Certificate
 
 router.get('/', (req, res) => {
   MedicalCertificate.findAll({
-    attributes: ['certificate_id'],
     include: [
       {
         model: Patient,
@@ -55,8 +57,7 @@ router.get('/', (req, res) => {
     .catch((err) => {
       res.status(400).json(err);
     });
-}); // Can dynamically add reason etc 
-
+}); // Can dynamically add reason etc
 
 // Get 1 Medical Certificate by ID
 router.get('/:id', (req, res) => {
@@ -83,7 +84,5 @@ router.get('/:id', (req, res) => {
       res.status(400).json(err);
     });
 });
-
-
 
 module.exports = router;

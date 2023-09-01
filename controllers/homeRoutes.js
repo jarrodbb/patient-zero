@@ -49,6 +49,7 @@ router.get('/profile', withAuth, async (req, res) => {
       });
 
       const patient = patientData.get({ plain: true });
+      console.log(patient);
 
       res.render('patientProfile', {
         ...patient,
@@ -98,5 +99,87 @@ router.get('/patients', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/updatePatient', withAuth, async (req, res) => {
+  try {
+    const patientData = await Patient.findByPk(req.session.user_id, {
+      // include: [{ model: Doctor, attributes: ['name'] }],
+    });
+
+    const patient = patientData.get({ plain: true });
+
+    console.log(patient);
+    console.log(patient.doctor);
+
+    res.render('updatePatient', {
+      ...patient,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const patientData = await Patient.findByPk(req.params.id, {
+      include: [{ model: MedicalCertificate }],
+    });
+
+    const patient = patientData.get({ plain: true });
+
+    console.log(patient);
+
+    res.render('patientAndDoctorMedCerts', {
+      ...patient,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/patient-certificate', withAuth, async (req, res) => {
+  try {
+    const patientData = await Patient.findByPk(req.session.user_id, {
+      include: [{ model: MedicalCertificate }],
+    });
+
+    const patient = patientData.get({ plain: true });
+
+    console.log(patient);
+
+    res.render('certificate', {
+      ...patient,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error(err);
+    console.log('fail');
+    res.status(500).json(err);
+  }
+});
+
+// router.get('/patient-certificate', withAuth, async (req, res) => {
+//   try {
+//     const patientData = await Patient.findByPk(req.session.user_id, {
+//       include: [{ model: MedicalCertificate }],
+//     });
+
+//     const patient = patientData.get({ plain: true });
+
+//     console.log(patient);
+
+//     res.render('certificate', {
+//       ...patient,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;

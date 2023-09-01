@@ -12,6 +12,10 @@ MedicalCertificate.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    reason: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     patient_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
