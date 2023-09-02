@@ -66,8 +66,8 @@ router.get('/profile', withAuth, async (req, res) => {
     const doctorData = await Doctor.findByPk(req.session.user_id, {
       include: [
         {
-          model: Patient,
-          attributes: ['patient_id', 'name'],
+          model: MedicalCertificate,
+          attributes: ['certificate_id', 'reason'],
         },
       ],
     });
@@ -125,16 +125,16 @@ router.get('/updatePatient', withAuth, async (req, res) => {
 //Router to render patient based on id and medCert
 router.get('/:id', withAuth, async (req, res) => {
   try {
-    const patientData = await Patient.findByPk(req.params.id, {
-      include: [{ model: MedicalCertificate }],
+    const medCertData = await MedicalCertificate.findByPk(req.params.id, {
+      include: [{ model: Patient }],
     });
 
-    const patient = patientData.get({ plain: true });
+    const certs = medCertData.get({ plain: true });
 
-    console.log(patient);
+    console.log(certs);
 
     res.render('patientAndDoctorMedCerts', {
-      ...patient,
+      ...certs,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

@@ -37,32 +37,34 @@
   <p>High blood pressure {{high_blood_pressure}}</p>
   <p>Kidney or liver disease {{kidney_or_liver_disease}}</p>
   <p>meds {{medication_list}}</p>
-  <p> test {{medical_certificates.is_approved}}</p>
+  <p> Allergies {{allergies}}</p>
 
   {{#if medical_certificates.length}}
   <div class="col-md-6 project-list">
     <h3>Med certs:</h3>
 
     {{#each medical_certificates as |cert|}}
+  <div class="delete-button">
     <div class="row mb-2">
       <div class="col-md-8">
         <h4>{{cert.reason}}</h4>
+        <h4>Approved? {{cert.approved}}</h4>
         <div class='col-md-4'>
             <button
               class='btn btn-sm btn-danger'
-              data-id='{{project.id}}'
+              data-id='{{cert.certificate_id}}'
             >DELETE</button>
           </div>
       </div>
-      
+      </div>
     {{/each}}
   </div>
   {{/if}}
-
-<p>
+<div class="update-button">
     <button class="btn btn-primary" data-id="{{patient_id}}">update profile</button>
   </p>
-
+</div>
+<p>
 </div>
 </div>
 
