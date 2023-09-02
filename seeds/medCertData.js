@@ -3,16 +3,19 @@ const { MedicalCertificate } = require('../models');
 const medCertData = [
   {
     reason: 'hate work',
+    approved: false,
     patient_id: 1,
     doctor_id: 2,
   },
   {
     reason: 'sick of life',
+    approved: false,
     patient_id: 2,
     doctor_id: 1,
   },
   {
     reason: "can't be bothered",
+    approved: false,
     patient_id: 3,
     doctor_id: 1,
   },

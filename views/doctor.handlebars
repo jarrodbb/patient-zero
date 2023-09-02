@@ -1,23 +1,29 @@
 <div class='container'>
-  <h2>Welcome, Doctor {{doctor.name}}!</h2>
+  <h2>Welcome, {{name}}!</h2>
   <h3>Medical Certificate Requests:</h3>
 
-  {{#each patients as |patient|}}
-    <div class='row mb-4 project'>
-      <div class='col-md-5'>
-        <h1>
-          <a href='/{{patient.patient_id}}'>{{patient.name}}</a>
-        </h1>
-        {{!-- <p>Requested by
-          {{patient.name}}
-          on --}}
-        {{!-- {{format_date patient.request_date}}</p> --}}
-      </div>
-      {{!-- <div class='col-md-7'>
-        <p>
-          {{patient.request_description}}
-        </p>
-      </div> --}}
+  {{#if medical_certificates.length}}
+    <div class='col-md-6 med-cert-list'>
+      <h3>Medical Certificate Requests:</h3>
+
+      {{#each medical_certificates as |medCert|}}
+        <div class='row mb-2'>
+          <div class='col-md-8'>
+            <h4>{{medCert.reason}}</h4>
+          </div>
+          {{!-- not sure why only the first button works --}}
+          <div class='col-md-4'>
+            <div class='approve-button'>
+              <button
+                class='btn btn-sm btn-success'
+                data-id='{{medCert.certificate_id}}'
+              >Patient Info</button>
+            </div>
+          </div>
+        </div>
+      {{/each}}
     </div>
-  {{/each}}
+  {{/if}}
 </div>
+
+<script src='./js/doctorProfile.js'></script>

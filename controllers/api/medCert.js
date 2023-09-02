@@ -85,4 +85,57 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const medCertData = await MedicalCertificate.update(
+      {
+        approved: req.body.approved,
+      },
+      {
+        where: {
+          certificate_id: req.params.id,
+        },
+      }
+    );
+
+    if (!medCertData[0]) {
+      res.status(404).json({ message: 'No Certificate with this id' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.logged_in = true;
+
+      res.json({ message: 'updated!' });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const medCertData = await MedicalCertificate.destroy({
+      where: {
+        certificate_id: req.params.id,
+      },
+    });
+
+    if (!medCertData) {
+      res.status(404).json({ message: 'No cert found with this id!' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.logged_in = true;
+
+      res.json({ message: 'deleted!' });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
