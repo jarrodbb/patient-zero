@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Patient, Doctor } = require('../../models');
 
 const withAuth = require('../../utils/auth');
-
+// POST request for user registration
 router.post('/', async (req, res) => {
   try {
     const patientData = await Patient.create({
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+// GET request to Retrieve all patient records from the DB
 router.get('/', async (req, res) => {
   try {
     const patientData = await Patient.findAll();
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+//Get request for patients by ID with assigned doctor
 router.get('/:id', async (req, res) => {
   try {
     const patientData = await Patient.findByPk(req.params.id, {
@@ -47,7 +47,7 @@ router.get('/:id', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+//Post request for patient login
 router.post('/login', async (req, res) => {
   try {
     const patientData = await Patient.findOne({
@@ -85,7 +85,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Put request to update patient info based on ID
 router.put('/:id', withAuth, async (req, res) => {
   try {
     // const patientData = await Patient.findByPk(req.session.user_id);

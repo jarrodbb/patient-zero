@@ -21,33 +21,37 @@ const newMedCert = async (event) => {
   }
 };
 
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/projects/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to delete project');
-    }
-  }
-};
-
 const updateButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     document.location.replace('/updatePatient');
   }
 };
 
+const delButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/medcert/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert('Failed to delete ');
+    }
+  }
+};
+
 document.querySelector('.med-cert').addEventListener('click', newMedCert);
 
 document
-  .querySelector('.patient-info')
+  .querySelector('.update-button')
   .addEventListener('click', updateButtonHandler);
+
+document
+  .querySelector('.delete-button')
+  .addEventListener('click', delButtonHandler);
 
 //needs updating
 // document

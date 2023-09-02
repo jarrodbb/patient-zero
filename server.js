@@ -42,7 +42,7 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
-  console.log(`Server is available at http://localhost:${PORT}/`); //You can just click the link instead here
+  console.log(`Server is available at http://localhost:${PORT}/`);
 });
 
 //  you can use npx nodemon in the terminal now

@@ -66,8 +66,8 @@ router.get('/profile', withAuth, async (req, res) => {
     const doctorData = await Doctor.findByPk(req.session.user_id, {
       include: [
         {
-          model: Patient,
-          attributes: ['patient_id', 'name'],
+          model: MedicalCertificate,
+          attributes: ['certificate_id', 'reason'],
         },
       ],
     });
@@ -85,7 +85,8 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-// Router to
+// Router to render doctor as well as passing patients array as data to that view (doctor seeing patient)
+// withAuth middleware used to check if user is logged in (in this case doctors)
 router.get('/patients', withAuth, async (req, res) => {
   try {
     patientData = await Patient.findAll({
@@ -99,7 +100,9 @@ router.get('/patients', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// Router to render updated patients
+// spreads ... the properties of the patient object into the rednering context
+// includes a logged in property to render whether user is logged in or not
 router.get('/updatePatient', withAuth, async (req, res) => {
   try {
     const patientData = await Patient.findByPk(req.session.user_id, {
@@ -119,24 +122,19 @@ router.get('/updatePatient', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Router to render patient based on id and medCert
 router.get('/:id', withAuth, async (req, res) => {
   try {
-    const patientData = await Patient.findByPk(req.params.id, {
-      include: [{ model: MedicalCertificate }],
+    const medCertData = await MedicalCertificate.findByPk(req.params.id, {
+      include: [{ model: Patient }],
     });
 
-    if (!patientData) {
-      // Handle the case where the patient was not found
-      return res.status(404).json({ message: 'Patient not found' });
-    }
+    const certs = medCertData.get({ plain: true });
 
-    const patient = patientData.get({ plain: true });
-
-    console.log(patient);
+    console.log(certs);
 
     res.render('patientAndDoctorMedCerts', {
-      ...patient,
+      ...certs,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -144,7 +142,7 @@ router.get('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Router to render medical certificate with patient by id
 router.get('/patient-certificate', withAuth, async (req, res) => {
   try {
     const medCerts = await MedicalCertificate.findAll({
