@@ -14,7 +14,6 @@ const patientData = [
     kidney_or_liver_disease: false,
     medication_list: 'Antihistamine',
     doctor_id: 2,
-    patient_id: 1
   },
   {
     name: 'John Sleep',
