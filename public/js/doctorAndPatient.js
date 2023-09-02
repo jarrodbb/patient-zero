@@ -36,9 +36,9 @@ const delButtonHandler = async (event) => {
 };
 
 document
-  .querySelector('.delete-button')
-  .addEventListener('click', delButtonHandler);
-
-document
   .querySelector('.approve-button')
   .addEventListener('click', approveCert);
+
+document
+  .querySelector('.delete-button')
+  .addEventListener('click', delButtonHandler);
