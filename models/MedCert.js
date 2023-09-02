@@ -19,6 +19,11 @@ MedicalCertificate.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    approved: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
+    },
     patient_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
