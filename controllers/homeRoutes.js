@@ -126,6 +126,11 @@ router.get('/:id', withAuth, async (req, res) => {
       include: [{ model: MedicalCertificate }],
     });
 
+    if (!patientData) {
+      // Handle the case where the patient was not found
+      return res.status(404).json({ message: 'Patient not found' });
+    }
+
     const patient = patientData.get({ plain: true });
 
     console.log(patient);
@@ -147,14 +152,14 @@ router.get('/patient-certificate', withAuth, async (req, res) => {
       include: [{ model: Patient }],
     });
 
-    const medicalCerificates = medCerts.map((certificate) =>
+    const medicalCertificates = medCerts.map((certificate) =>
       certificate.get({ plain: true })
     );
 
-    console.log(medicalCerificates);
+    console.log(medicalCertificates);
 
     res.render('certificate', {
-      ...medicalCerificates,
+      ...medicalCertificates,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -163,6 +168,7 @@ router.get('/patient-certificate', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 // router.get('/patient-certificate', withAuth, async (req, res) => {
 //   try {

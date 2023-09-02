@@ -15,10 +15,6 @@ Doctor.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      references: {
-        model: 'patient',
-        key: 'doctor_id',
-      },
     },
     name: {
       type: DataTypes.STRING,
