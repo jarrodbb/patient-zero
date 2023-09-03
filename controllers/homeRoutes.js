@@ -150,14 +150,14 @@ router.get('/patient-certificate', withAuth, async (req, res) => {
       include: [{ model: Patient }],
     });
 
-    const medicalCerificates = medCerts.map((certificate) =>
+    const medicalCertificates = medCerts.map((certificate) =>
       certificate.get({ plain: true })
     );
 
-    console.log(medicalCerificates);
+    console.log(medicalCertificates);
 
     res.render('certificate', {
-      ...medicalCerificates,
+      ...medicalCertificates,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -166,6 +166,7 @@ router.get('/patient-certificate', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 // router.get('/patient-certificate', withAuth, async (req, res) => {
 //   try {

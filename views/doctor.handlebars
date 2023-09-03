@@ -1,30 +1,34 @@
-<script src="./js/doctor-auth.js"></script>
-<div class='container'>
-  <h2>Welcome, {{name}}!</h2>
-  <h3>Medical Certificate Requests:</h3>
+<div class="container mx-auto py-8">
+  <a href="/" class="text-blue-500 hover:text-blue-700 transition duration-300">
+    <i class="fas fa-arrow-left text-xl mr-2"></i> Go Back
+  </a>
+</div>
+
+
+<div class="container mx-auto py-8">
+  <h2 class="text-2xl font-semibold mb-4">Welcome, {{name}}!</h2>
+
+  <h3 class="text-lg font-semibold mb-4">Medical Certificate Requests:</h3>
 
   {{#if medical_certificates.length}}
-    <div class='col-md-6 med-cert-list'>
-      <h3>Medical Certificate Requests:</h3>
-
+    <div class="med-cert-list grid grid-cols-1 md:grid-cols-2 gap-4">
       {{#each medical_certificates as |medCert|}}
-        <div class='row mb-2'>
-          <div class='col-md-8'>
-            <h4>{{medCert.reason}}</h4>
-          </div>
-          {{!-- not sure why only the first button works --}}
-          <div class='col-md-4'>
-            <div class='approve-button'>
-              <button
-                class='btn btn-sm btn-success'
-                data-id='{{medCert.certificate_id}}'
-              >Patient Info</button>
-            </div>
+        <div class="bg-white rounded-lg p-4 shadow-md">
+          <h4 class="text-xl font-semibold mb-2">{{medCert.reason}}</h4>
+          <div class="flex justify-end approve-button">
+            <button
+              class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 btn-success"
+              data-id="{{medCert.certificate_id}}"
+            >
+              Patient Info
+            </button>
           </div>
         </div>
       {{/each}}
     </div>
+  {{else}}
+    <p class="text-lg">No medical certificate requests found.</p>
   {{/if}}
 </div>
 
-<script src='./js/doctorProfile.js'></script>
+<script src="./js/doctorProfile.js"></script>

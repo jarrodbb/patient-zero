@@ -1,46 +1,43 @@
-<div class='row'>
-  <div class='col-md-6'>
-    <h2>Patient Login</h2>
-
-    <form class='form login-form'>
-      <div class='form-group'>
-        <label for='email-login'>email:</label>
-        <input class='form-input' type='text' id='email-login' />
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <!-- Patient Login -->
+  <div class="p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold mb-4">Patient Login</h2>
+    <form class="form login-form space-y-4">
+      <div class="space-y-2">
+        <label for="email-login" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-blue-500 focus:outline-none" type="text" id="email-login" />
       </div>
-      <div class='form-group'>
-        <label for='password-login'>password:</label>
-        <input class='form-input' type='password' id='password-login' />
+      <div class="space-y-2">
+        <label for="password-login" class="block text-sm font-medium text-gray-700">Password:</label>
+        <input class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-blue-500 focus:outline-none" type="password" id="password-login" />
       </div>
-      <div class='form-group'>
-        <button class='btn btn-primary' type='submit'>login</button>
+      <div class="flex items-center justify-between">
+        <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600" type="submit">Login</button>
       </div>
     </form>
   </div>
-  <div class='col-md-6'>
-    <h2>Patient Signup</h2>
 
-    <form class='form signup-form new-patient-form'>
-      <div class='form-group'>
-        <label for='name-signup'>full name:</label>
-        <input class='form-input' type='text' id='patient-name' />
+  <!-- Patient Signup -->
+  <div class="p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold mb-4">Patient Signup</h2>
+    <form class="form new-patient-form space-y-4">
+      <div class="space-y-2">
+        <label for="patient-name" class="block text-sm font-medium text-gray-700">Full Name:</label>
+        <input class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-blue-500 focus:outline-none" type="text" id="patient-name" />
       </div>
-      <div class='form-group'>
-        <label for='email-signup'>email:</label>
-        <input class='form-input' type='text' id='email-signup' />
+      <div class="space-y-2">
+        <label for="email-signup" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-blue-500 focus:outline-none" type="text" id="email-signup" />
       </div>
-      <div class='form-group'>
-        <label for='password-signup'>password:</label>
-        <input class='form-input' type='text' id='password-signup' />
-        <button
-          id='passwordGenerator'
-          class='btn btn-primary'
-          type='submit'
-        >Generate Password</button>
+      <div class="space-y-2">
+        <label for="password-signup" class="block text-sm font-medium text-gray-700">Password:</label>
+        <input class="w-full px-4 py-2 border rounded-md focus:ring focus:ring-blue-500 focus:outline-none" type="password" id="password-signup" />
       </div>
-      <div class='form-group'>
-        <button class='btn btn-primary' type='submit'>signup</button>
+      <button id="passwordGenerator" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600" type="submit">Generate Password</button>
+      <div class="flex items-center justify-between">
+        <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600" type="submit">Signup</button>
       </div>
     </form>
   </div>
 </div>
-<script src='./js/patientLogin.js'></script>
+<script src="./js/patientLogin.js"></script>
