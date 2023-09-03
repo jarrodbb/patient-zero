@@ -42,12 +42,19 @@ No questions asked.
 ## 📓 Table of Contents
 
 - [Installation](#Installation)
+  
 - [Usage](#Usage)
+  
 - [Screenshot](#Screenshot)
+  
 - [Video](#Video)
+  
 - [License](#License)
+  
 - [Contributing](#Contributing)
+  
 - [Tests](#Tests)
+  
 - [Questions](#Questions)
     
 ## 🖥️Installation 
