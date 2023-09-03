@@ -19,9 +19,11 @@ const approveCert = async (event) => {
   }
 };
 
+document.querySelector('.buttons-ok').addEventListener('click', approveCert);
+
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  if (event.target.hasAttribute('data-name')) {
+    const id = event.target.getAttribute('data-name');
 
     const response = await fetch(`/api/medcert/${id}`, {
       method: 'DELETE',
@@ -36,9 +38,5 @@ const delButtonHandler = async (event) => {
 };
 
 document
-  .querySelector('.approve-button')
-  .addEventListener('click', approveCert);
-
-document
-  .querySelector('.delete-button')
+  .querySelector('.buttons-delete')
   .addEventListener('click', delButtonHandler);

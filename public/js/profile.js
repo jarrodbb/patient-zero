@@ -50,7 +50,7 @@ document
   .addEventListener('click', updateButtonHandler);
 
 document
-  .querySelector('.delete-button')
+  .querySelector('.delete-now')
   .addEventListener('click', delButtonHandler);
 
 //needs updating
