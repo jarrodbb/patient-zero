@@ -42,8 +42,8 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
-  console.log(`Server is available at http://localhost:${PORT}/`);
+  console.log(`Server is available at http://localhost:${PORT}/`); //You can just click the link instead here
 });
 
-//  you can use npx nodemon in the terminal now
+// Hey guys!!! you can use npx nodemon in the terminal now
 //  nodemon monitors your project files for changes and automatically restarts your Node.js application when changes are detected
