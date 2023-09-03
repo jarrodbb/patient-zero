@@ -31,6 +31,9 @@ const sess = {
 
 app.use(session(sess));
 
+// Serve static files from the /assets directory
+app.use('/assets', express.static('assets'));
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

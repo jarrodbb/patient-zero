@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{patient.name}}!</h2>
-    
+    <h2>Welcome, <strong>{{name}}</strong>!</h2>
   </div>
 </div>
 
@@ -20,7 +19,7 @@
        
       </div>
       <div class="form-group">
-        <label for="project-desc">description:</label>
+        <label for="project-desc">Description:</label>
         <textarea class="form-input" id="medical-reason" name="med-cert"></textarea>
       </div>
       <div class="form-group">
@@ -30,15 +29,39 @@
   </div>
 
 <div class="col-md-6">
-<div class="text-center patient-info">
-  <h2>{{name}}</h2>
-  <p>Diabetes {{diabetes}}</p>
-  <p>heart disease {{heart_disease}}</p>
-  <p>High blood pressure {{high_blood_pressure}}</p>
-  <p>Kidney or liver disease {{kidney_or_liver_disease}}</p>
-  <p>meds {{medication_list}}</p>
-  <p> Allergies {{allergies}}</p>
-
+  <div class="Patient-table-container">
+    <table class="patient-table">
+      <tr>
+        <th>Name</th>
+        <td>{{name}}</td>
+      </tr>
+      <tr>
+        <th>Diabetes</th>
+        <td>{{diabetes}}</td>
+      </tr>
+      <tr>
+        <th>Heart Disease</th>
+        <td>{{heart_disease}}</td>
+      </tr>
+      <tr>
+        <th>High Blood Pressure</th>
+        <td>{{high_blood_pressure}}</td>
+      </tr>
+      <tr>
+        <th>Kidney or Liver Disease</th>
+        <td>{{kidney_or_liver_disease}}</td>
+      </tr>
+      <tr>
+        <th>Medication List</th>
+        <td>{{medication_list}}</td>
+      </tr>
+      <tr>
+        <th>Allergies</th>
+        <td>{{allergies}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
   {{#if medical_certificates.length}}
   <div class="col-md-6 project-list">
     <h3>Med certs:</h3>
@@ -61,7 +84,7 @@
   </div>
   {{/if}}
 <div class="update-button">
-    <button class="btn btn-primary" data-id="{{patient_id}}">update profile</button>
+    <button class="btn btn-primary" data-id="{{patient_id}}">Update profile</button>
   </p>
 </div>
 <p>

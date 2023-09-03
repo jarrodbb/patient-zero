@@ -26,3 +26,22 @@ header, .project:not(:last-child) {
 .login-message {
   margin-left: auto;
 }
+
+.Patient-table-container {
+  text-align: left;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.patient-table th,
+.patient-table td {
+  border: 1px solid #ccc; 
+  padding: 8px;
+}
+
+.patient-table th {
+  background-color: #f2f2f2; 
+}
