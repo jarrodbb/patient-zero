@@ -1,39 +1,51 @@
-{{!-- i want a back button but this one isn't working  --}}
+{{! i want a back button but this one isn't working  }}
 
-{{!-- <div class="container mx-auto py-8">
+{{! <div class="container mx-auto py-8">
   <a href="./doctor.handlebars" class="text-blue-500 hover:text-blue-700 transition duration-300">
     <i class="fas fa-arrow-left text-xl mr-2"></i> Go Back
   </a>
-</div> --}}
+</div> }}
 
 <div class='container mx-auto py-8'>
 
-  <h2 class='text-2x1 font-semibold mb-4'>Here are the medical certificate requests for {{patient.name}}</h2>
+  <h2 class='text-2x1 font-semibold mb-4'>Here are the medical certificate
+    requests for
+    {{patient.name}}</h2>
   <h3 class='text-1g font-semibold mb-4'>Medical Certificate Requests:</h3>
 
   <div class='grid grid-cols-1 md:grid-cols-2 gap-4 med-cert-list'>
 
     <div class='bg-white rounded-lg p-4 shadow-md'>
       <div class='flex justify-between'>
-        <h4 class="text-xl font-semibold">{{reason}}</h4>
+        <h4 class='text-xl font-semibold'>{{reason}}</h4>
+        <div class="buttons-ok buttons-delete">
         {{#if approved}}
-          <button
-            class='bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105 delete-button'
-            data-id='{{certificate_id}}'
-          >DISAPPROVE</button>
+        <div class='col-md-4 delete-now'>
+            {{!-- <button
+              class='btn btn-sm btn-danger delete-now'
+              data-id='{{cert.certificate_id}}'
+            >DELETE</button> --}}
+          <div>
+            <button
+              class='bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105 '
+              data-name='{{certificate_id}}'
+            >DELETE</button>
+          </div>
         {{else}}
+        <div class="approve-button">
           <button
-            class='bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105 approve-button'
+            class='bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105'
             data-id='{{certificate_id}}'
           >APPROVE</button>
+          </div>
         {{/if}}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script src='./js/doctorAndPatient.js'></script>
-
 
 {{!-- <div class='container'>
 
