@@ -1,5 +1,7 @@
 # Take a Sickie
+
 ## 📄 Description 
+
 Latest video game release? Hungover from last night? Important work meeting with the boss? Say no more our doctors have a medical certificate for you.
 No questions asked. 
 
@@ -18,7 +20,9 @@ No questions asked.
 ![bootstrap](https://img.shields.io/badge/Bootstrap-CSS%20Framework-blueviolet)
 ![nodemon](https://img.shields.io/badge/nodemon-3.0.1-black)
 ![Password-Generator](https://img.shields.io/badge/Password-Generator-green)
+
 ## 🪛 Technologies used 
+
 <p><a href="https://nodejs.org/">Node.js</a></p>
 <p><a href="https://www.npmjs.com/">NPM</a></p>
 <p><a href="https://www.npmjs.com/package/express">Express.js</a></p>
@@ -36,6 +40,7 @@ No questions asked.
 <p><a href="https://www.npmjs.com/package/generate-password">Password generator</a></p>
 
 ## 📓 Table of Contents
+
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Screenshot](#Screenshot)
@@ -46,26 +51,32 @@ No questions asked.
 - [Questions](#Questions)
     
 ## 🖥️Installation 
+
 Deployed on Heroku at 
 https://takesickies-40fabe44386a.herokuapp.com/
   
 ## 💬Usage 
+
 For illegal purposes only
 
 ## 🖼️Screenshot
+
 Take a sickie homepage
 ![Homepage](./assets/Take%20a%20sickie.jpg.png)
 Patient Signup and login 
 ![Patient-Signup](./assets/Patient_Signup.png)
 
 ## 📹Video
+
 Shows a new patient signing up 
 ![Gif](./assets/Sickie.gif)
 
 ## ⚖️License 
+
 This project is licensed under MIT
   
 ## 🤝Contributing 
+
 Brian Trang,
 Jarrod Blanning,
 Thorsten Beowulf,
@@ -74,9 +85,11 @@ Hailin Ruan
 With thanks to USYD
   
 ## 🛠️Tests
+
 N/A
  
 ## ❔Questions
+
 If you have any questions about this project, please contact me directly at Brian.trang9@gmail.com. Feel free to view more of our projects at 
 https://github.com/MakeRedundant
 https://github.com/ThorstenBeowulf
