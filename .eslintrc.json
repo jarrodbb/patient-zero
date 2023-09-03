@@ -7,6 +7,15 @@
     "es6": true,
     "es2017": true
   },
+
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
     "no-undef-init": "error",
     "no-duplicate-case": "error",
@@ -31,9 +40,6 @@
     "indent": ["error", 2],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
-    "radix": "off",
-    "parserOptions": {
-      "ecmaVersion": 2018
-    }
+    "radix": "off"
   }
 }

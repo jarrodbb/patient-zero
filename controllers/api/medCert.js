@@ -1,20 +1,9 @@
 const router = require('express').Router();
+
+//Import Models
 const { Doctor, Patient, MedicalCertificate } = require('../../models');
 
 const withAuth = require('../../utils/auth');
-
-// router.get('/', async (req, res) => {
-//   try {
-//     const medCertData = await MedicalCertificate.findAll({
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Patient }, { model: Doctor }],
-//     });
-
-//     res.status(200).json(medCertData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
 
 // Create medical certificate
 router.post('/', withAuth, async (req, res) => {
@@ -26,7 +15,6 @@ router.post('/', withAuth, async (req, res) => {
     });
 
     req.session.save(() => {
-      // req.session.user_id = patient_id;
       req.session.logged_in = true;
 
       res.status(200).json(certificateData);
@@ -57,7 +45,7 @@ router.get('/', (req, res) => {
     .catch((err) => {
       res.status(400).json(err);
     });
-}); // Can dynamically add reason etc
+});
 
 // Get 1 Medical Certificate by ID
 router.get('/:id', (req, res) => {
@@ -85,6 +73,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Update one cert by id
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const medCertData = await MedicalCertificate.update(
@@ -114,6 +103,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
+// delete one cert by id
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const medCertData = await MedicalCertificate.destroy({

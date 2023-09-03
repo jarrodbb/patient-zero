@@ -1,3 +1,5 @@
+// Seed for med certs
+
 const { MedicalCertificate } = require('../models');
 
 const medCertData = [
@@ -14,7 +16,7 @@ const medCertData = [
     doctor_id: 1,
   },
   {
-    reason: "can't be bothered",
+    reason: 'cant be bothered',
     approved: false,
     patient_id: 3,
     doctor_id: 1,

@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const { Patient, Doctor } = require('../../models');
 
+//Import Models
+const { Patient, Doctor } = require('../../models');
 const withAuth = require('../../utils/auth');
+
 // POST request for user registration
 router.post('/', async (req, res) => {
   try {
@@ -21,6 +23,7 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 // GET request to Retrieve all patient records from the DB
 router.get('/', async (req, res) => {
   try {
@@ -31,6 +34,7 @@ router.get('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 //Get request for patients by ID with assigned doctor
 router.get('/:id', async (req, res) => {
   try {
@@ -47,6 +51,7 @@ router.get('/:id', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 //Post request for patient login
 router.post('/login', async (req, res) => {
   try {
@@ -74,7 +79,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = patientData.patient_id;
       req.session.is_doctor = false;
       console.log(req.session.is_doctor);
-      // getting undefined for req.session.user_id
+
       console.log(req.session.user_id);
       req.session.logged_in = true;
 
@@ -85,10 +90,10 @@ router.post('/login', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 //Put request to update patient info based on ID
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    // const patientData = await Patient.findByPk(req.session.user_id);
     const updateStatus = await Patient.update(
       {
         date_of_birth: req.body.date_of_birth,
@@ -114,7 +119,7 @@ router.put('/:id', withAuth, async (req, res) => {
     req.session.save(() => {
       req.session.user_id = updateStatus.id;
       req.session.logged_in = true;
-      // console.log(req.session.user_id);
+
       res.json({ message: 'updated!' });
     });
   } catch (err) {
@@ -123,6 +128,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
+//Router to logout
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -133,11 +139,10 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Router to update by req.session.user_id
 router.put('/', withAuth, async (req, res) => {
   console.log(req.session.user_id);
   try {
-    // const patientData = await Patient.findByPk(req.session.user_id);
-
     const patientData = await Patient.update(
       {
         allergies: req.body.allergies,
@@ -167,45 +172,5 @@ router.put('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-//update profile - this was the other way where i tried to use the req.session.user_id
-// router.put('/', withAuth, async (req, res) => {
-//   console.log(req.session.user_id);
-//   try {
-//     // const patientData = await Patient.findByPk(req.session.user_id);
-
-//     const updateStatus = await Patient.update(
-//       {
-//         date_of_birth: req.body.date_of_birth,
-//         requires_certificate: req.body.requires_certificate,
-//         allergies: req.body.allergies,
-//         diabetes: req.body.diabetes,
-//         heart_disease: req.body.heart_disease,
-//         high_blood_pressure: req.body.high_blood_pressure,
-//         kidney_or_liver_disease: req.body.kidney_or_liver_disease,
-//         medication_list: req.body.medication_list,
-//         doctor_id: req.body.doctor_id,
-//       },
-//       {
-//         where: {
-//           id: req.session.user_id,
-//         },
-//       }
-//     );
-//     if (!updateStatus[0]) {
-//       res.status(404).json({ message: 'No Patient with this id' });
-//     }
-
-//     req.session.save(() => {
-//       req.session.user_id = patientData.id;
-//       req.session.logged_in = true;
-
-//       res.json({ message: 'updated!' });
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;
