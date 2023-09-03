@@ -1,23 +1,24 @@
-<div class="container mx-auto py-8">
-  <a href="/" class="text-blue-500 hover:text-blue-700 transition duration-300">
-    <i class="fas fa-arrow-left text-xl mr-2"></i> Go Back
+<div class='container mx-auto py-2'>
+  <a href='/' class='text-blue-500 hover:text-blue-700 transition duration-300'>
+    <i class='fas fa-arrow-left text-xl mr-2'></i>
+    Go Back
   </a>
 </div>
 
-<div class="container mx-auto py-8">
-  <h2 class="text-2xl font-semibold mb-4">Welcome, {{name}}!</h2>
+<div class='container mx-auto py-8'>
+  <h2 class='text-2xl font-semibold mb-4'>Welcome, {{name}}!</h2>
 
-  <h3 class="text-lg font-semibold mb-4">Medical Certificate Requests:</h3>
+  <h3 class='text-lg font-semibold mb-4'>Medical Certificate Requests:</h3>
 
   {{#if medical_certificates.length}}
-    <div class="med-cert-list grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class='med-cert-list grid grid-cols-1 md:grid-cols-2 gap-4'>
       {{#each medical_certificates as |medCert|}}
-        <div class="bg-white rounded-lg p-4 shadow-md">
-          <h4 class="text-xl font-semibold mb-2">{{medCert.reason}}</h4>
-          <div class="flex justify-end approve-button">
+        <div class='bg-white rounded-lg p-4 shadow-md'>
+          <h4 class='text-xl font-semibold mb-2'>{{medCert.reason}}</h4>
+          <div class='flex justify-end approve-button'>
             <button
-              class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 btn-success"
-              data-id="{{medCert.certificate_id}}"
+              class='px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 btn-success'
+              data-id='{{medCert.certificate_id}}'
             >
               Patient Info
             </button>
@@ -26,8 +27,8 @@
       {{/each}}
     </div>
   {{else}}
-    <p class="text-lg">No medical certificate requests found.</p>
+    <p class='text-lg'>No medical certificate requests found.</p>
   {{/if}}
 </div>
 
-<script src="./js/doctorProfile.js"></script>
+<script src='./js/doctorProfile.js'></script>

@@ -1,113 +1,65 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{patient.name}}!</h2>
-    
+<div class="container mx-auto py-8">
+  <h2 class="text-3xl font-semibold text-gray-800 mb-6">Welcome, {{name}}!</h2>
+
+  <h3 class="text-2xl font-semibold text-gray-800 mb-4">Medical Certificate Requests:</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="bg-white rounded-lg p-4 shadow-md med-cert">
+      <h4 class="text-xl font-semibold mb-2">Request a Medical Certificate:</h4>
+      <form class="form new-project-form">
+        <div class="form-group">
+          <label for="doctor-name" class="text-lg font-semibold">Preferred Doctor:</label>
+          <select class="form-input mt-1" id="doctor-name">
+            <option value="1">Dr. Dan Javascript</option>
+            <option value="2">Dr. Error Prone</option>
+            <option value="3">Dr. Merge Conflict</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="project-desc" class="text-lg font-semibold">Description:</label>
+          <textarea class="form-input mt-1" id="medical-reason" name="med-cert"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-200">
+            Request
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="bg-white rounded-lg p-4 shadow-md text-center patient-info">
+      <h2 class="text-2xl font-semibold">{{name}}</h2>
+      <p class="text-lg font-semibold">Diabetes: {{diabetes}}</p>
+      <p class="text-lg font-semibold">Heart Disease: {{heart_disease}}</p>
+      <p class="text-lg font-semibold">High Blood Pressure: {{high_blood_pressure}}</p>
+      <p class="text-lg font-semibold">Kidney or Liver Disease: {{kidney_or_liver_disease}}</p>
+      <p class="text-lg font-semibold">Medication List: {{medication_list}}</p>
+      <p class="text-lg font-semibold">Allergies: {{allergies}}</p>
+
+      {{#if medical_certificates.length}}
+      <div class="project-list mt-4 delete-button">
+        <h3 class="text-xl font-semibold">Medical Certificates:</h3>
+        {{#each medical_certificates as |cert|}}
+        <div class="mb-3">
+          <h4 class="text-lg font-semibold">{{cert.reason}}</h4>
+          <p class="font-semibold">Approved? {{cert.approved}}</p>
+          <button class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-red-200" data-id="{{cert.certificate_id}}">
+            DELETE
+          </button>
+        </div>
+        {{/each}}
+      </div>
+      {{else}}
+      <p class="mt-4 text-lg text-gray-600">No medical certificate requests found.</p>
+      {{/if}}
+
+      <div class="update-button mt-4">
+        <button class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-200" data-id="{{patient_id}}">
+          Update Profile
+        </button>
+      </div>
+    </div>
   </div>
 </div>
-
-<div class="row mt-4">
-  <div class="col-md-6 med-cert">
-    <h3>Request a Medical Certificate:</h3>
-
-    <form class="form new-project-form">
-      <div class="form-group">
-        <label for="doctor-name">Prefered Doctor:</label>
-        <select class='form-input' id='doctor-name'>
-        <option value='1'>Dr. Dan Javascript</option>
-        <option value='2'>Dr. Error Prone</option>
-        <option value='3'>Dr. Merge Conflict</option>
-      </select>
-       
-      </div>
-      <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="medical-reason" name="med-cert"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Request</button>
-      </div>
-    </form>
-  </div>
-
-<div class="col-md-6">
-<div class="text-center patient-info">
-  <h2>{{name}}</h2>
-  <p>Diabetes {{diabetes}}</p>
-  <p>heart disease {{heart_disease}}</p>
-  <p>High blood pressure {{high_blood_pressure}}</p>
-  <p>Kidney or liver disease {{kidney_or_liver_disease}}</p>
-  <p>meds {{medication_list}}</p>
-  <p> Allergies {{allergies}}</p>
-
-  {{#if medical_certificates.length}}
-  <div class="col-md-6 project-list">
-    <h3>Med certs:</h3>
-
-    {{#each medical_certificates as |cert|}}
-  <div class="delete-button">
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4>{{cert.reason}}</h4>
-        <h4>Approved? {{cert.approved}}</h4>
-        <div class='col-md-4'>
-            <button
-              class='btn btn-sm btn-danger'
-              data-id='{{cert.certificate_id}}'
-            >DELETE</button>
-          </div>
-      </div>
-      </div>
-    {{/each}}
-  </div>
-  {{/if}}
-<div class="update-button">
-    <button class="btn btn-primary" data-id="{{patient_id}}">update profile</button>
-  </p>
-</div>
-<p>
-</div>
-</div>
-
 
 <script src="./js/profile.js"></script>
-
-
- {{!-- <form class="form new-project-form">
-    <div class="form-group">
-      <label for="request-reason">Diabetes:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">Allergies:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="nut">Nuts</option>
-        <option value="pollen">Pollen</option>
-        <option value="none">None</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">Heart disease:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">High blood pressure:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">Kidney or liver disease:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-  </form> --}}

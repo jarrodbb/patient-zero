@@ -1,39 +1,24 @@
-<div class='row'>
-  <div class='col-auto'>
-    <h2> {{name}} did you want to update your profile?</h2>
-    {{!-- {{#if doctor.length}}
-  <div class="col-md-6 project-list">
-    <h3>Assigned Doctor</h3>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center mb-4">{{name}}, Would you like to update your profile?</h2>
+    </div>
+  </div>
 
-    {{#each doctor as |doctor|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4>{{doctor.name}}</h4>
+<div class="row mt-4">
+    <div class="col-md-6">
+      <div class="text-center">
+        <h2>{{name}}</h2>
+        <p><strong>Diabetes:</strong> {{diabetes}}</p>
+        <p><strong>Heart Disease:</strong> {{heart_disease}}</p>
+        <p><strong>High Blood Pressure:</strong> {{high_blood_pressure}}</p>
+        <p><strong>Kidney or Liver Disease:</strong> {{kidney_or_liver_disease}}</p>
+        <p><strong>Medication:</strong> {{medication_list}}</p>
       </div>
-      
-    {{/each}}
-  </div>
-  {{/if}}
-</div>   --}}
-
-    {{!-- <p>{{doctor.name}}</p> --}}
-
-  </div>
-</div>
+    </div>
 
 <div class='col-md-6'>
-  <div class='text-center'>
-    <h2>{{name}}</h2>
-    <p>Diabetes {{diabetes}}</p>
-    <p>Heart disease {{heart_disease}}</p>
-    <p>High blood pressure {{high_blood_pressure}}</p>
-    <p>Kidney or liver disease {{kidney_or_liver_disease}}</p>
-    <p>Medication {{medication_list}}</p>
-  </div>
-</div>
-
-<div class='col-md-6'>
-  <h3>Update Medical History:</h3>
+  <h3>Update Medical History: *must answer all questions before updating</h3>
 
   <form class='form patient-update'>
     <div class='form-group'>
@@ -50,6 +35,7 @@
         class='form-input'
         id='allergies'
         name='allergies-desc'
+        placeholder='Enter your allergies (e.g. nuts, pollen) or none'
       ></textarea>
     </div>
     <div class='form-group'>
@@ -58,6 +44,7 @@
         class='form-input'
         id='medication'
         name='medication-desc'
+        placeholder='Enter your current medications (e.g. aspirin, antibiotics) or none'
       ></textarea>
     </div>
     <div class='form-group'>
