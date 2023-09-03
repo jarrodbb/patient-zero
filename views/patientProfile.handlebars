@@ -61,29 +61,7 @@
       </tr>
     </table>
   </div>
-</div>
-  {{#if medical_certificates.length}}
-  <div class="col-md-6 project-list">
-    <h3>Med certs:</h3>
-
-    {{#each medical_certificates as |cert|}}
-  <div class="delete-button">
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4>{{cert.reason}}</h4>
-        <h4>Approved? {{cert.approved}}</h4>
-        <div class='col-md-4'>
-            <button
-              class='btn btn-sm btn-danger delete-now'
-              data-id='{{cert.certificate_id}}'
-            >DELETE</button>
-          </div>
-      </div>
-      </div>
-    {{/each}}
-  </div>
-  {{/if}}
-<div class="update-button">
+  <div class="update-button">
     <button class="btn btn-primary" data-id="{{patient_id}}">Update profile</button>
   </p>
 </div>
@@ -91,46 +69,33 @@
 </div>
 </div>
 
+</div>
+
+
+
+{{#if medical_certificates.length}}
+<h2><strong>Certificates</strong></h2>
+    <div
+      class='med-cert-list grid grid-cols-1 md:grid-cols-2 gap-4 delete-now'
+    >
+      {{#each medical_certificates as |medCert|}}
+        <div class='bg-white rounded-lg p-4 shadow-md'>
+          <h4 class='text-xl font-semibold mb-2'>{{medCert.reason}}</h4>
+          <h4 class='text-xl font-semibold mb-2'><strong>Approved?</strong> {{medCert.approved}}</h4>
+          <div class='flex justify-end'>
+            <button
+              class='bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105 '
+              data-name='{{certificate_id}}'
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class='text-lg'>No medical certificate requests found.</p>
+  {{/if}}
+
+
+
 
 <script src="./js/profile.js"></script>
-
-
- {{!-- <form class="form new-project-form">
-    <div class="form-group">
-      <label for="request-reason">Diabetes:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">Allergies:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="nut">Nuts</option>
-        <option value="pollen">Pollen</option>
-        <option value="none">None</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">Heart disease:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">High blood pressure:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="request-reason">Kidney or liver disease:</label>
-      <select class="form-input" id="request-reason" name="request-reason">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-  </form> --}}
