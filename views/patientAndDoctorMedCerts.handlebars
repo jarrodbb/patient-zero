@@ -3,6 +3,14 @@
   <h2 class='text-2x1 font-semibold mb-4'>Here are the medical certificate
     requests for
     {{patient.name}}</h2>
+
+  <p>Diabetes {{patient.diabetes}}</p>
+  <p>heart disease {{patient.heart_disease}}</p>
+  <p>High blood pressure {{patient.high_blood_pressure}}</p>
+  <p>Kidney or liver disease {{patient.kidney_or_liver_disease}}</p>
+  <p>meds {{patient.medication_list}}</p>
+  <p> Allergies {{patient.allergies}}</p>
+
   <h3 class='text-1g font-semibold mb-4'>Medical Certificate Requests:</h3>
 
   <div class='grid grid-cols-1 md:grid-cols-2 gap-4 med-cert-list'>
@@ -10,20 +18,25 @@
     <div class='bg-white rounded-lg p-4 shadow-md'>
       <div class='flex justify-between'>
         <h4 class='text-xl font-semibold'>{{reason}}</h4>
+
         {{#if approved}}
           <button
             class='bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105 delete-button'
             data-id='{{certificate_id}}'
           >DELETE</button>
         {{else}}
+        <div class="approve-button">
           <button
-            class='bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105 approve-button'
+            class='bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105'
             data-id='{{certificate_id}}'
           >APPROVE</button>
+          </div>
         {{/if}}
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <script src='./js/doctorAndPatient.js'></script>
