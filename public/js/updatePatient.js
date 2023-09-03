@@ -1,3 +1,6 @@
+// Updating Patient
+
+// Handle update (PUT) request for patient with ID
 const updatePatientInfo = async (event) => {
   event.preventDefault();
 
@@ -8,8 +11,9 @@ const updatePatientInfo = async (event) => {
   const high_blood_pressure = document.querySelector('#blood').value;
   const kidney_or_liver_disease = document.querySelector('#kidney').value;
 
+  // If allergies and medication_list included
   if (allergies && medication_list) {
-    const response = await fetch(`/api/patient`, {
+    const response = await fetch('/api/patient', {
       method: 'PUT',
       body: JSON.stringify({
         diabetes,
@@ -31,8 +35,9 @@ const updatePatientInfo = async (event) => {
     }
   }
 
+  // if allergies included
   if (allergies) {
-    const response = await fetch(`/api/patient`, {
+    const response = await fetch('/api/patient', {
       method: 'PUT',
       body: JSON.stringify({
         diabetes,
@@ -53,8 +58,9 @@ const updatePatientInfo = async (event) => {
     }
   }
 
+  // if medication included
   if (medication_list) {
-    const response = await fetch(`/api/patient`, {
+    const response = await fetch('/api/patient', {
       method: 'PUT',
       body: JSON.stringify({
         diabetes,
@@ -76,6 +82,8 @@ const updatePatientInfo = async (event) => {
   }
 };
 
+// event listener for submitting request
+// take user back to profile
 document
   .querySelector('.patient-update')
   .addEventListener('submit', updatePatientInfo);

@@ -1,3 +1,5 @@
+// Seed for doctors
+
 const { Doctor } = require('../models');
 
 const doctorData = [
