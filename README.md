@@ -47,17 +47,20 @@ No questions asked.
     
 ## 🖥️Installation 
 Deployed on Heroku at 
-https://shrouded-thicket-43089-7595b3319402.herokuapp.com/
+https://takesickies-40fabe44386a.herokuapp.com/
   
 ## 💬Usage 
 For illegal purposes only
 
 ## 🖼️Screenshot
+Take a sickie homepage
+![Homepage](./assets/Take%20a%20sickie.jpg.png)
 Patient Signup and login 
 ![Patient-Signup](./assets/Patient_Signup.png)
 
 ## 📹Video
-Insert Video recording here 
+Shows a new patient signing up 
+![Gif](./assets/Sickie.gif)
 
 ## ⚖️License 
 This project is licensed under MIT
