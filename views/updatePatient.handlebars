@@ -1,6 +1,7 @@
 <div class='row'>
   <div class='col-auto'>
-    <h2> {{name}} did you want to update your profile?</h2>
+    <h2><strong>{{name}}</strong><br>Did you want to update your profile?</h2><br>
+
     {{!-- {{#if doctor.length}}
   <div class="col-md-6 project-list">
     <h3>Assigned Doctor</h3>
@@ -23,17 +24,39 @@
 
 <div class='col-md-6'>
   <div class='text-center'>
-    <h2>{{name}}</h2>
-    <p>Diabetes {{diabetes}}</p>
-    <p>Heart disease {{heart_disease}}</p>
-    <p>High blood pressure {{high_blood_pressure}}</p>
-    <p>Kidney or liver disease {{kidney_or_liver_disease}}</p>
-    <p>Medication {{medication_list}}</p>
+    <table class='patient-table'>
+      <tr>
+        <th>Name</th>
+        <td>{{name}}</td>
+      </tr>
+      <tr>
+        <th>Diabetes</th>
+        <td>{{diabetes}}</td>
+      </tr>
+      <tr>
+        <th>Heart Disease</th>
+        <td>{{heart_disease}}</td>
+      </tr>
+      <tr>
+        <th>High Blood Pressure</th>
+        <td>{{high_blood_pressure}}</td>
+      </tr>
+      <tr>
+        <th>Kidney or Liver Disease</th>
+        <td>{{kidney_or_liver_disease}}</td>
+      </tr>
+      <tr>
+        <th>Medication List</th>
+        <td>{{medication_list}}</td>
+      </tr>
+    </table>
   </div>
 </div>
 
+<br>
+
 <div class='col-md-6'>
-  <h3>Update Medical History:</h3>
+  <h3><strong>Update Medical History:</strong></h3>
 
   <form class='form patient-update'>
     <div class='form-group'>
