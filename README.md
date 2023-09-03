@@ -41,21 +41,21 @@ No questions asked.
 
 ## 📓 Table of Contents
 
-- [Installation](#Installation)
+- [Installation](#installation)
   
-- [Usage](#Usage)
+- [Usage](#usage)
   
-- [Screenshot](#Screenshot)
+- [Screenshot](#screenshot)
   
-- [Video](#Video)
+- [Video](#video)
   
-- [License](#License)
+- [License](#license)
   
-- [Contributing](#Contributing)
+- [Contributing](#contributing)
   
-- [Tests](#Tests)
+- [Tests](#tests)
   
-- [Questions](#Questions)
+- [Questions](#questions)
     
 ## 🖥️Installation 
 
