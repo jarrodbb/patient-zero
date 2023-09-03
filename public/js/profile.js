@@ -28,8 +28,8 @@ const updateButtonHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  if (event.target.hasAttribute('data-name')) {
+    const id = event.target.getAttribute('data-name');
 
     const response = await fetch(`/api/medcert/${id}`, {
       method: 'DELETE',
@@ -52,8 +52,3 @@ document
 document
   .querySelector('.delete-now')
   .addEventListener('click', delButtonHandler);
-
-//needs updating
-// document
-//   .querySelector('.project-list')
-//   .addEventListener('click', delButtonHandler);
