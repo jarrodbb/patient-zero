@@ -1,14 +1,37 @@
+{{!-- Page to display patient info and able to approve or delete med cert --}}
+
 <div class='container mx-auto py-8'>
 
   <h2 class='text-2x1 font-semibold mb-4'>Here are the medical certificate
     requests for
     {{patient.name}}</h2>
-  <p>Diabetes {{patient.diabetes}}</p>
-  <p>heart disease {{patient.heart_disease}}</p>
-  <p>High blood pressure {{patient.high_blood_pressure}}</p>
-  <p>Kidney or liver disease {{patient.kidney_or_liver_disease}}</p>
-  <p>meds {{patient.medication_list}}</p>
-  <p> Allergies {{patient.allergies}}</p>
+  <div class='col-md-6'>
+  <div class='text-center'>
+    <table class='patient-table'>
+      <tr>
+        <th>Diabetes</th>
+        <td>{{patient.diabetes}}</td>
+      </tr>
+      <tr>
+        <th>Heart Disease</th>
+        <td>{{patient.heart_disease}}</td>
+      </tr>
+      <tr>
+        <th>High Blood Pressure</th>
+        <td>{{patient.high_blood_pressure}}</td>
+      </tr>
+      <tr>
+        <th>Kidney or Liver Disease</th>
+        <td>{{patient.kidney_or_liver_disease}}</td>
+      </tr>
+      <tr>
+        <th>Medication List</th>
+        <td>{{patient.medication_list}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
 
   <h3 class='text-1g font-semibold mb-4'>Medical Certificate Requests:</h3>
 
@@ -20,10 +43,7 @@
         <div class="buttons-ok buttons-delete">
         {{#if approved}}
         <div class='col-md-4 delete-now'>
-            {{!-- <button
-              class='btn btn-sm btn-danger delete-now'
-              data-id='{{cert.certificate_id}}'
-            >DELETE</button> --}}
+          
           <div>
             <button
               class='bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition-transform transform hover:scale-105 '

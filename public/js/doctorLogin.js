@@ -22,47 +22,9 @@ const loginFormHandler = async (event) => {
   }
 };
 
-// const signupFormHandler = async (event) => {
-//   event.preventDefault();
-
-//   const name = document.querySelector('#name-signup').value.trim();
-//   const email = document.querySelector('#email-signup').value.trim();
-//   const password = document.querySelector('#password-signup').value.trim();
-
-//   if (name && email && password) {
-//     const response = await fetch('/api/doctor', {
-//       method: 'POST',
-//       body: JSON.stringify({ name, email, password }),
-//       headers: { 'Content-Type': 'application/json' },
-//     });
-
-//     if (response.ok) {
-//       document.location.replace('/profile');
-//     } else {
-//       alert(response.statusText);
-//     }
-//   }
-// };
-
-// app.post('/doctor/login', async (req, res) => {
-//   try {
-//     const loggedInDoctor = await loginDoctor(req.body.email, req.body.password);
-
-//     if (loggedInDoctor) {
-//       res.render('doctors', { doctor: loggedInDoctor });
-//     } else {
-//       res.render('login', { error: 'Login failed' });
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server Error');
-//   }
-// });
-
+// Event listener for login
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
 
-// document
-//   .querySelector('.signup-form')
-//   .addEventListener('submit', signupFormHandler);
+

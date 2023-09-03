@@ -1,3 +1,5 @@
+//  Create and export routes
+
 const router = require('express').Router();
 const patientRoutes = require('./patientRoutes');
 const doctorRoutes = require('./doctorRoutes');

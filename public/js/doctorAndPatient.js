@@ -1,3 +1,5 @@
+// Doctor to approve cert
+// Makes a Put request to one medcert with id
 const approveCert = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
@@ -19,8 +21,10 @@ const approveCert = async (event) => {
   }
 };
 
+//Event listener for approving cert
 document.querySelector('.buttons-ok').addEventListener('click', approveCert);
 
+// Delete one medcert with id
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-name')) {
     const id = event.target.getAttribute('data-name');
@@ -37,6 +41,7 @@ const delButtonHandler = async (event) => {
   }
 };
 
+// Event listener for delete
 document
   .querySelector('.buttons-delete')
   .addEventListener('click', delButtonHandler);

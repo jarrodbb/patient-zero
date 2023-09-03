@@ -1,3 +1,4 @@
+// seed for patients
 const { Patient } = require('../models');
 
 const patientData = [

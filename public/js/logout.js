@@ -1,3 +1,5 @@
+//Handle log out request
+
 const logout = async () => {
   const response = await fetch('/api/patient/logout', {
     method: 'POST',
