@@ -41,19 +41,19 @@ No questions asked.
 
 ## 📓 Table of Contents
 
-- [Installation](#installation)
+- [Installation](#%EF%B8%8Finstallation)
   
 - [Usage](#usage)
   
-- [Screenshot](#screenshot)
+- [Screenshot](#%EF%B8%8Fscreenshot)
   
 - [Video](#video)
   
-- [License](#license)
+- [License](#%EF%B8%8Flicense)
   
 - [Contributing](#contributing)
   
-- [Tests](#tests)
+- [Tests](#%EF%B8%8Ftests)
   
 - [Questions](#questions)
     
